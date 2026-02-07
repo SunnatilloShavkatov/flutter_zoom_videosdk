@@ -1,7 +1,6 @@
 #import <ZoomVideoSDK/ZoomVideoSDK.h>
 #import "FlutterZoomView.h"
 #import "FlutterZoomVideoSdkUser.h"
-#import "FlutterZoomVideoSdkAnnotationHelper.h"
 #import "JSONConvert.h"
 #import "SDKPiPHelper.h"
 #import "SDKCallKitManager.h"
@@ -62,7 +61,6 @@
     ZoomVideoSDKVideoAspect videoAspect;
     ZoomVideoSDKVideoCanvas* currentCanvas;
     ZoomVideoSDKVideoResolution videoResolution;
-    ZoomVideoSDKAnnotationHelper* helper;
 }
 
 
@@ -78,7 +76,6 @@
         videoAspect = ZoomVideoSDKVideoAspect_Original;
         currentCanvas = nil;
         videoResolution = ZoomVideoSDKVideoResolution_Auto;
-        helper = nil;
     }
     return self;
 }
@@ -231,11 +228,6 @@
     } else {
         NSLog(@"subscribe view");
         [currentCanvas subscribeWithView:self aspectMode:videoAspect andResolution:videoResolution];
-    }
-    bool annotationEnable = [[[ZoomVideoSDK shareInstance] getShareHelper] isAnnotationFeatureSupport];
-    if (sharing && annotationEnable && (helper == nil)) {
-        helper = [[[ZoomVideoSDK shareInstance] getShareHelper] createAnnotationHelper:self];
-        [[FlutterZoomVideoSdkAnnotationHelper alloc] setAnnotationHelper:helper];
     }
 }
 @end

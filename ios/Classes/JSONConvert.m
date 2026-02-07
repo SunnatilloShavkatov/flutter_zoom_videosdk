@@ -256,20 +256,6 @@ RCT_ENUM_CONVERTER_WITH_REVERSED(
 )
 
 RCT_ENUM_CONVERTER_WITH_REVERSED(
-   ZoomVideoSDKLiveStreamStatus,
-   (@{
-        @"ZoomVideoSDKLiveStreamStatus_None" : @(ZoomVideoSDKLiveStreamStatus_None),
-        @"ZoomVideoSDKLiveStreamStatus_InProgress" : @(ZoomVideoSDKLiveStreamStatus_InProgress),
-        @"ZoomVideoSDKLiveStreamStatus_Connecting" : @(ZoomVideoSDKLiveStreamStatus_Connecting),
-        @"ZoomVideoSDKLiveStreamStatus_FailedTimeout" : @(ZoomVideoSDKLiveStreamStatus_FailedTimeout),
-        @"ZoomVideoSDKLiveStreamStatus_StartFailed" : @(ZoomVideoSDKLiveStreamStatus_StartFailed),
-        @"ZoomVideoSDKLiveStreamStatus_Ended" : @(ZoomVideoSDKLiveStreamStatus_Ended),
-    }),
-    ZoomVideoSDKLiveStreamStatus_None,
-    integerValue
-)
-
-RCT_ENUM_CONVERTER_WITH_REVERSED(
     ZoomVideoSDKPhoneStatus,
     (@{
         @"ZoomVideoSDKPhoneStatus_None" : @(ZoomVideoSDKPhoneStatus_None),
@@ -396,18 +382,6 @@ RCT_ENUM_CONVERTER_WITH_REVERSED(
 
 RCT_ENUM_CONVERTER_WITH_REVERSED(
 
-     ZoomVideoSDKVirtualBackgroundDataType,
-     (@{
-             @"ZoomVideoSDKVirtualBackgroundDataType_Blur" : @(ZoomVideoSDKVirtualBackgroundDataType_Blur),
-             @"ZoomVideoSDKVirtualBackgroundDataType_Image" : @(ZoomVideoSDKVirtualBackgroundDataType_Image),
-             @"ZoomVideoSDKVirtualBackgroundDataType_None" : @(ZoomVideoSDKVirtualBackgroundDataType_None),
-     }),
-     ZoomVideoSDKVirtualBackgroundDataType_None,
-     integerValue
-)
-
-RCT_ENUM_CONVERTER_WITH_REVERSED(
-
     ZoomVideoSDKCRCCallStatus,
     (@{
             @"ZoomVideoSDKCRCCallOutStatus_Success" : @(ZoomVideoSDKCRCCallStatus_Success),
@@ -443,56 +417,6 @@ RCT_ENUM_CONVERTER_WITH_REVERSED(
      }),
      ZoomVideoSDKChatPrivilege_Unknown,
      integerValue
-)
-
-RCT_ENUM_CONVERTER_WITH_REVERSED(
-
-    ZoomVideoSDKAnnotationToolType,
-    (@{
-            @"ZoomVideoSDKAnnotationToolType_None" : @(ZoomVideoSDKAnnotationToolType_None),
-            @"ZoomVideoSDKAnnotationToolType_Pen" : @(ZoomVideoSDKAnnotationToolType_Pen),
-            @"ZoomVideoSDKAnnotationToolType_HighLighter" : @(ZoomVideoSDKAnnotationToolType_HighLighter),
-            @"ZoomVideoSDKAnnotationToolType_AutoLine" : @(ZoomVideoSDKAnnotationToolType_AutoLine),
-            @"ZoomVideoSDKAnnotationToolType_AutoRectangle" : @(ZoomVideoSDKAnnotationToolType_AutoRectangle),
-            @"ZoomVideoSDKAnnotationToolType_AutoEllipse" : @(ZoomVideoSDKAnnotationToolType_AutoEllipse),
-            @"ZoomVideoSDKAnnotationToolType_AutoArrow" : @(ZoomVideoSDKAnnotationToolType_AutoArrow),
-            @"ZoomVideoSDKAnnotationToolType_AutoRectangleFill" : @(ZoomVideoSDKAnnotationToolType_AutoRectangleFill),
-            @"ZoomVideoSDKAnnotationToolType_AutoEllipseFill": @(ZoomVideoSDKAnnotationToolType_AutoEllipseFill),
-            @"ZoomVideoSDKAnnotationToolType_SpotLight": @(ZoomVideoSDKAnnotationToolType_SpotLight),
-            @"ZoomVideoSDKAnnotationToolType_Arrow": @(ZoomVideoSDKAnnotationToolType_Arrow),
-            @"ZoomVideoSDKAnnotationToolType_Eraser": @(ZoomVideoSDKAnnotationToolType_ERASER),
-            @"ZoomVideoSDKAnnotationToolType_Picker": @(ZoomVideoSDKAnnotationToolType_Picker),
-            @"ZoomVideoSDKAnnotationToolType_AutoRectangleSemiFill": @(ZoomVideoSDKAnnotationToolType_AutoRectangleSemiFill),
-            @"ZoomVideoSDKAnnotationToolType_AutoEllipseSemiFill": @(ZoomVideoSDKAnnotationToolType_AutoEllipseSemiFill),
-            @"ZoomVideoSDKAnnotationToolType_AutoDoubleArrow": @(ZoomVideoSDKAnnotationToolType_AutoDoubleArrow),
-            @"ZoomVideoSDKAnnotationToolType_AutoDiamond": @(ZoomVideoSDKAnnotationToolType_AutoDiamond),
-            @"ZoomVideoSDKAnnotationToolType_AutoStampArrow": @(ZoomVideoSDKAnnotationToolType_AutoStampArrow),
-            @"ZoomVideoSDKAnnotationToolType_AutoStampCheck": @(ZoomVideoSDKAnnotationToolType_AutoStampCheck),
-            @"ZoomVideoSDKAnnotationToolType_AutoStampX": @(ZoomVideoSDKAnnotationToolType_AutoStampX),
-            @"ZoomVideoSDKAnnotationToolType_AutoStampStar": @(ZoomVideoSDKAnnotationToolType_AutoStampStar),
-            @"ZoomVideoSDKAnnotationToolType_AutoStampHeart": @(ZoomVideoSDKAnnotationToolType_AutoStampHeart),
-            @"ZoomVideoSDKAnnotationToolType_AutoStampQm" : @(ZoomVideoSDKAnnotationToolType_AutoStampQm),
-            @"ZoomVideoSDKAnnotationToolType_VanishingPen" : @(ZoomVideoSDKAnnotationToolType_VanishingPen),
-            @"ZoomVideoSDKAnnotationToolType_VanishingArrow" : @(ZoomVideoSDKAnnotationToolType_VanishingArrow),
-            @"ZoomVideoSDKAnnotationToolType_VanishingDoubleArrow" : @(ZoomVideoSDKAnnotationToolType_VanishingDoubleArrow),
-            @"ZoomVideoSDKAnnotationToolType_VanishingEllipse" : @(ZoomVideoSDKAnnotationToolType_VanishingEllipse),
-            @"ZoomVideoSDKAnnotationToolType_VanishingRectangle" : @(ZoomVideoSDKAnnotationToolType_VanishingRectangle),
-            @"ZoomVideoSDKAnnotationToolType_VanishingDiamond" : @(ZoomVideoSDKAnnotationToolType_VanishingDiamond),
-    }),
-    ZoomVideoSDKAnnotationToolType_None,
-    integerValue
-)
-
-RCT_ENUM_CONVERTER_WITH_REVERSED(
-
-    ZoomVideoSDKAnnotationClearType,
-    (@{
-            @"ZoomVideoSDKAnnotationClearType_All" : @(ZoomVideoSDKAnnotationClearType_All),
-            @"ZoomVideoSDKAnnotationClearType_Others" : @(ZoomVideoSDKAnnotationClearType_Others),
-            @"ZoomVideoSDKAnnotationClearType_My" : @(ZoomVideoSDKAnnotationClearType_My),
-    }),
-    ZoomVideoSDKAnnotationClearType_Others,
-    integerValue
 )
 
 RCT_ENUM_CONVERTER_WITH_REVERSED(
@@ -591,28 +515,6 @@ RCT_ENUM_CONVERTER_WITH_REVERSED(
             @"ZoomVideoSDKDataType_Share" : @(ZoomVideoSDKDataType_Share),
             @"ZoomVideoSDKDataType_Video" : @(ZoomVideoSDKDataType_Video),
             @"ZoomVideoSDKDataType_Unknown" : @(ZoomVideoSDKDataType_Unknown),
-    }),
-    AVCaptureDevicePositionUnspecified,
-    integerValue
-)
-
-RCT_ENUM_CONVERTER_WITH_REVERSED(
-
-    ZoomVideoSDKWhiteboardExportFormatType,
-    (@{
-            @"ZoomVideoSDKWhiteboardExport_Format_PDF" : @(ZoomVideoSDKWhiteboardExport_Format_PDF),
-    }),
-    AVCaptureDevicePositionUnspecified,
-    integerValue
-)
-
-RCT_ENUM_CONVERTER_WITH_REVERSED(
-
-    
-    ZoomVideoSDKWhiteboardStatus,
-    (@{
-            @"WhiteboardStatus_Started" : @(ZoomVideoSDKWhiteboardStatus_Started),
-            @"WhiteboardStatus_Stopped" : @(ZoomVideoSDKWhiteboardStatus_Stopped),
     }),
     AVCaptureDevicePositionUnspecified,
     integerValue

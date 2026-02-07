@@ -18,14 +18,18 @@ A new Flutter plugin project.
   s.dependency 'Flutter'
   s.dependency "ZoomVideoSDK/ZoomVideoSDK", '2.4.0'
   s.dependency 'ZoomVideoSDK/zoomcml', '2.4.0'
-  s.dependency 'ZoomVideoSDK/CptShare', '2.4.0'
-  s.dependency 'ZoomVideoSDK/zm_annoter_dynamic', '2.4.0'
   s.dependency 'ZoomVideoSDK/ZoomTask', '2.4.0'
-  s.dependency 'ZoomVideoSDK/Whiteboard', '2.4.0'
   s.platform = :ios, '15.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386 arm64' }
 
   s.preserve_paths = 'ZoomVideoSDK.xcframework/**/*'
+  s.exclude_files = [
+    'Classes/FlutterZoomVideoSdkAnnotationHelper.*',
+    'Classes/FlutterZoomVideoSdkWhiteboardHelper.*',
+    'Classes/FlutterZoomVideoSdkLiveStreamHelper.*',
+    'Classes/FlutterZoomVideoSdkVirtualBackgroundHelper.*',
+    'Classes/FlutterZoomVideoSdkVirtualBackgroundItem.*',
+  ]
 end

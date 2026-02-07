@@ -9,7 +9,6 @@
 #import "FlutterZoomVideoSdkAudioStatus.h"
 #import "FlutterZoomVideoSdkChatHelper.h"
 #import "FlutterZoomVideoSdkCmdChannel.h"
-#import "FlutterZoomVideoSdkLiveStreamHelper.h"
 #import "FlutterZoomVideoSdkLiveTranscriptionHelper.h"
 #import "FlutterZoomVideoSdkPhoneHelper.h"
 #import "FlutterZoomVideoSdkRecordingHelper.h"
@@ -24,14 +23,11 @@
 #import "FlutterZoomVideoSdkLiveTranscriptionLanguage.h"
 #import "FlutterZoomVideoSdkILiveTranscriptionMessageInfo.h"
 #import "FlutterZoomVideoSdkShareHelper.h"
-#import "FlutterZoomVideoSdkVirtualBackgroundHelper.h"
 #import "FlutterZoomViewViewFactory.h"
 #import "FlutterZoomVideoSdkCameraShareViewFactory.h"
 #import "FlutterZoomVideoSdkCRCHelper.h"
-#import "FlutterZoomVideoSdkAnnotationHelper.h"
 #import "FlutterZoomVideoSdkRemoteCameraControlHelper.h"
 #import "FlutterZoomVideoSdkShareAction.h"
-#import "FlutterZoomVideoSdkWhiteboardHelper.h"
 #import "FlutterZoomVideoSdkSubSessionHelper.h"
 #import "FlutterZoomVideoSdkSubSessionKit.h"
 #import "SDKCallKitManager.h"
@@ -50,7 +46,6 @@ FlutterZoomVideoSdkAudioSettingHelper* flutterZoomVideoSdkAudioSettingHelper;
 FlutterZoomVideoSdkAudioStatus* flutterZoomVideoSdkAudioStatus;
 FlutterZoomVideoSdkChatHelper* flutterZoomVideoSdkChatHelper;
 FlutterZoomVideoSdkCmdChannel* flutterZoomVideoSdkCmdChannel;
-FlutterZoomVideoSdkLiveStreamHelper* flutterZoomVideoSdkLiveStreamHelper;
 FlutterZoomVideoSdkLiveTranscriptionHelper* flutterZoomVideoSdkLiveTranscriptionHelper;
 FlutterZoomVideoSdkPhoneHelper* flutterZoomVideoSdkPhoneHelper;
 FlutterZoomVideoSdkRecordingHelper* flutterZoomVideoSdkRecordingHelper;
@@ -62,11 +57,8 @@ FlutterZoomVideoSdkVideoHelper* flutterZoomVideoSdkVideoHelper;
 FlutterZoomVideoSdkVideoStatisticInfo* flutterZoomVideoSdkVideoStatisticInfo;
 FlutterZoomVideoSdkVideoStatus* flutterZoomVideoSdkVideoStatus;
 FlutterZoomVideoSdkShareHelper* flutterZoomVideoSdkShareHelper;
-FlutterZoomVideoSdkVirtualBackgroundHelper* flutterZoomVideoSdkVirtualBackgroundHelper;
 FlutterZoomVideoSdkCRCHelper* flutterZoomVideoSdkCRCHelper;
-FlutterZoomVideoSdkAnnotationHelper* flutterZoomVideoSdkAnnotationHelper;
 FlutterZoomVideoSdkRemoteCameraControlHelper* flutterZoomVideoSdkRemoteCameraControlHelper;
-FlutterZoomVideoSdkWhiteboardHelper* flutterZoomVideoSdkWhiteboardHelper;
 FlutterZoomVideoSdkSubSessionHelper* flutterZoomVideoSdkSubSessionHelper;
 
 - (dispatch_queue_t)methodQueue {
@@ -98,7 +90,6 @@ FlutterZoomVideoSdkSubSessionHelper* flutterZoomVideoSdkSubSessionHelper;
     if (flutterZoomVideoSdkAudioStatus == nil) flutterZoomVideoSdkAudioStatus = [[FlutterZoomVideoSdkAudioStatus alloc] init];
     if (flutterZoomVideoSdkChatHelper == nil) flutterZoomVideoSdkChatHelper = [[FlutterZoomVideoSdkChatHelper alloc] init];
     if (flutterZoomVideoSdkCmdChannel == nil) flutterZoomVideoSdkCmdChannel = [[FlutterZoomVideoSdkCmdChannel alloc] init];
-    if (flutterZoomVideoSdkLiveStreamHelper == nil) flutterZoomVideoSdkLiveStreamHelper = [[FlutterZoomVideoSdkLiveStreamHelper alloc] init];
     if (flutterZoomVideoSdkLiveTranscriptionHelper == nil) flutterZoomVideoSdkLiveTranscriptionHelper = [[FlutterZoomVideoSdkLiveTranscriptionHelper alloc] init];
     if (flutterZoomVideoSdkPhoneHelper == nil) flutterZoomVideoSdkPhoneHelper = [[FlutterZoomVideoSdkPhoneHelper alloc] init];
     if (flutterZoomVideoSdkRecordingHelper == nil) flutterZoomVideoSdkRecordingHelper = [[FlutterZoomVideoSdkRecordingHelper alloc] init];
@@ -108,11 +99,8 @@ FlutterZoomVideoSdkSubSessionHelper* flutterZoomVideoSdkSubSessionHelper;
     if (flutterZoomVideoSdkVideoHelper == nil) flutterZoomVideoSdkVideoHelper = [[FlutterZoomVideoSdkVideoHelper alloc] init];
     if (flutterZoomVideoSdkVideoStatisticInfo == nil) flutterZoomVideoSdkVideoStatisticInfo = [[FlutterZoomVideoSdkVideoStatisticInfo alloc] init];
     if (flutterZoomVideoSdkVideoStatus == nil) flutterZoomVideoSdkVideoStatus = [[FlutterZoomVideoSdkVideoStatus alloc] init];
-    if (flutterZoomVideoSdkVirtualBackgroundHelper == nil) flutterZoomVideoSdkVirtualBackgroundHelper = [[FlutterZoomVideoSdkVirtualBackgroundHelper alloc] init];
     if (flutterZoomVideoSdkCRCHelper == nil) flutterZoomVideoSdkCRCHelper = [[FlutterZoomVideoSdkCRCHelper alloc] init];
-    if (flutterZoomVideoSdkAnnotationHelper == nil) flutterZoomVideoSdkAnnotationHelper = [[FlutterZoomVideoSdkAnnotationHelper alloc] init];
     if (flutterZoomVideoSdkRemoteCameraControlHelper == nil) flutterZoomVideoSdkRemoteCameraControlHelper = [[FlutterZoomVideoSdkRemoteCameraControlHelper alloc] init];
-    if (flutterZoomVideoSdkWhiteboardHelper == nil) flutterZoomVideoSdkWhiteboardHelper = [[FlutterZoomVideoSdkWhiteboardHelper alloc] init];
     if (flutterZoomVideoSdkSubSessionHelper == nil) flutterZoomVideoSdkSubSessionHelper = [[FlutterZoomVideoSdkSubSessionHelper alloc] init];
 
     if ([@"initSdk" isEqualToString:call.method]) {
@@ -249,12 +237,6 @@ FlutterZoomVideoSdkSubSessionHelper* flutterZoomVideoSdkSubSessionHelper;
        return [flutterZoomVideoSdkChatHelper getChatPrivilege:result];
     } else if ([@"sendCommand" isEqualToString:call.method]) {
        return [flutterZoomVideoSdkCmdChannel sendCommand:call withResult:result];
-    } else if ([@"canStartLiveStream" isEqualToString:call.method]) {
-       return [flutterZoomVideoSdkLiveStreamHelper canStartLiveStream:result];
-    } else if ([@"startLiveStream" isEqualToString:call.method]) {
-       return [flutterZoomVideoSdkLiveStreamHelper startLiveStream:call withResult:result];
-    } else if ([@"stopLiveStream" isEqualToString:call.method]) {
-       return [flutterZoomVideoSdkLiveStreamHelper stopLiveStream:result];
     } else if ([@"canStartLiveTranscription" isEqualToString:call.method]) {
        return [flutterZoomVideoSdkLiveTranscriptionHelper canStartLiveTranscription:result];
     } else if ([@"getLiveTranscriptionStatus" isEqualToString:call.method]) {
@@ -397,34 +379,12 @@ FlutterZoomVideoSdkSubSessionHelper* flutterZoomVideoSdkSubSessionHelper;
         return [flutterZoomVideoSdkShareHelper isShareDeviceAudioEnabled:result];
     } else if ([@"enableShareDeviceAudio" isEqualToString:call.method]) {
         return [flutterZoomVideoSdkShareHelper enableShareDeviceAudio:call withResult:result];
-    } else if ([@"isAnnotationFeatureSupport" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkShareHelper isAnnotationFeatureSupport:result];
-    } else if ([@"disableViewerAnnotation" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkShareHelper disableViewerAnnotation:call withResult:result];
-    } else if ([@"isViewerAnnotationDisabled" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkShareHelper isViewerAnnotationDisabled:result];
     } else if ([@"pauseShare" isEqualToString:call.method]) {
         return [flutterZoomVideoSdkShareHelper pauseShare:result];
     } else if ([@"resumeShare" isEqualToString:call.method]) {
         return [flutterZoomVideoSdkShareHelper resumeShare:result];
     } else if ([@"startShareCamera" isEqualToString:call.method]) {
         return [flutterZoomVideoSdkShareHelper startShareCamera:result];
-    } else if ([@"setAnnotationVanishingToolTime" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkShareHelper setAnnotationVanishingToolTime:call withResult:result];
-    } else if ([@"getAnnotationVanishingToolDisplayTime" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkShareHelper getAnnotationVanishingToolDisplayTime:result];
-    } else if ([@"getAnnotationVanishingToolVanishingTime" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkShareHelper getAnnotationVanishingToolVanishingTime:result];
-    } else if ([@"isSupportVirtualBackground" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkVirtualBackgroundHelper isSupportVirtualBackground:result];
-    } else if ([@"addVirtualBackgroundItem" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkVirtualBackgroundHelper addVirtualBackgroundItem:call withResult:result];
-    } else if ([@"removeVirtualBackgroundItem" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkVirtualBackgroundHelper removeVirtualBackgroundItem:call withResult:result];
-    } else if ([@"setVirtualBackgroundItem" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkVirtualBackgroundHelper setVirtualBackgroundItem:call withResult:result];
-    } else if ([@"getVirtualBackgroundItemList" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkVirtualBackgroundHelper getVirtualBackgroundItemList:result];
     } else if ([@"openBrowser" isEqualToString:call.method]) {
         return [self openBrowser:call withResult:result];
     } else if ([@"isCRCEnabled" isEqualToString:call.method]) {
@@ -435,32 +395,6 @@ FlutterZoomVideoSdkSubSessionHelper* flutterZoomVideoSdkSubSessionHelper;
         return [flutterZoomVideoSdkCRCHelper cancelCallCRCDevice:result];
     }  else if ([@"getSessionSIPAddress" isEqualToString:call.method]) {
         return [flutterZoomVideoSdkCRCHelper getSessionSIPAddress:result];
-    }  else if ([@"isSenderDisableAnnotation" isEqualToString:call.method]) {
-       return [flutterZoomVideoSdkAnnotationHelper isSenderDisableAnnotation:result];
-    }  else if ([@"canDoAnnotation" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkAnnotationHelper canDoAnnotation:result];
-    } else if ([@"startAnnotation" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkAnnotationHelper startAnnotation:result];
-    } else if ([@"stopAnnotation" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkAnnotationHelper stopAnnotation:result];
-    } else if ([@"setToolColor" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkAnnotationHelper setToolColor:call withResult:result];
-    } else if ([@"getToolColor" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkAnnotationHelper getToolColor:result];
-    } else if ([@"setToolType" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkAnnotationHelper setToolType:call withResult:result];
-    } else if ([@"getToolType" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkAnnotationHelper getToolType:result];
-    } else if ([@"setToolWidth" isEqualToString:call.method]) {
-       return [flutterZoomVideoSdkAnnotationHelper setToolWidth:call withResult:result];
-    } else if ([@"getToolWidth" isEqualToString:call.method]) {
-       return [flutterZoomVideoSdkAnnotationHelper getToolWidth:result];
-    } else if ([@"undo" isEqualToString:call.method]) {
-       return [flutterZoomVideoSdkAnnotationHelper undo:result];
-    } else if ([@"redo" isEqualToString:call.method]) {
-       return [flutterZoomVideoSdkAnnotationHelper redo:result];
-    } else if ([@"clear" isEqualToString:call.method]) {
-       return [flutterZoomVideoSdkAnnotationHelper clear:call withResult:result];
     } else if ([@"giveUpControlRemoteCamera" isEqualToString:call.method]) {
        return [flutterZoomVideoSdkRemoteCameraControlHelper giveUpControlRemoteCamera:call withResult:result];
     } else if ([@"requestControlRemoteCamera" isEqualToString:call.method]) {
@@ -477,22 +411,6 @@ FlutterZoomVideoSdkSubSessionHelper* flutterZoomVideoSdkSubSessionHelper;
         return [flutterZoomVideoSdkRemoteCameraControlHelper zoomIn:call withResult:result];
     } else if ([@"zoomOut" isEqualToString:call.method]) {
         return [flutterZoomVideoSdkRemoteCameraControlHelper zoomOut:call withResult:result];
-    } else if ([@"canStartShareWhiteboard" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkWhiteboardHelper canStartShareWhiteboard:result];
-    } else if ([@"canStopShareWhiteboard" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkWhiteboardHelper canStopShareWhiteboard:result];
-    } else if ([@"startShareWhiteboard" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkWhiteboardHelper startShareWhiteboard:result];
-    } else if ([@"stopShareWhiteboard" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkWhiteboardHelper stopShareWhiteboard:result];
-    } else if ([@"isOtherSharingWhiteboard" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkWhiteboardHelper isOtherSharingWhiteboard:result];
-    } else if ([@"exportWhiteboard" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkWhiteboardHelper exportWhiteboard:call withResult:result];
-    } else if ([@"subscribeWhiteboard" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkWhiteboardHelper subscribeWhiteboard:call withResult:result];
-    } else if ([@"unSubscribeWhiteboard" isEqualToString:call.method]) {
-        return [flutterZoomVideoSdkWhiteboardHelper unSubscribeWhiteboard:result];
     } else if ([@"joinSubSession" isEqualToString:call.method]) {
         return [flutterZoomVideoSdkSubSessionHelper joinSubSession:call withResult:result];
     } else if ([@"startSubSession" isEqualToString:call.method]) {
@@ -805,15 +723,6 @@ FlutterZoomVideoSdkSubSessionHelper* flutterZoomVideoSdkSubSessionHelper;
     }
 }
 
-- (void)onLiveStreamStatusChanged:(ZoomVideoSDKLiveStreamHelper *)helper status:(ZoomVideoSDKLiveStreamStatus)status {
-    if (self.eventSink) {
-        self.eventSink(@{
-           @"name": @"onLiveStreamStatusChanged",
-           @"message": @{@"status": [[JSONConvert ZoomVideoSDKLiveStreamStatusValuesReversed ] objectForKey: @(status)]}
-       });
-    }
-}
-
 - (void)onChatNewMessageNotify:(ZoomVideoSDKChatHelper *)helper message:(ZoomVideoSDKChatMessage *)chatMessage {
     if (self.eventSink) {
         self.eventSink(@{
@@ -1099,30 +1008,6 @@ FlutterZoomVideoSdkSubSessionHelper* flutterZoomVideoSdkSubSessionHelper;
     }
 }
 
-- (void)onAnnotationHelperCleanUp:(ZoomVideoSDKAnnotationHelper *)helper
-{
-    [[FlutterZoomVideoSdkAnnotationHelper alloc] setAnnotationHelper:nil];
-    [[[ZoomVideoSDK shareInstance] getShareHelper] destroyAnnotationHelper:helper];
-    if (self.eventSink) {
-        self.eventSink(@{
-            @"name": @"onAnnotationHelperCleanUp",
-            @"message": @"onAnnotationHelperCleanUp",
-        });
-    }
-}
-
-- (void)onAnnotationPrivilegeChangeWithUser:(ZoomVideoSDKUser *_Nullable)user shareAction:(ZoomVideoSDKShareAction*_Nullable)shareAction {
-    if (self.eventSink) {
-        self.eventSink(@{
-            @"name": @"onAnnotationPrivilegeChange",
-            @"message": @{
-                @"shareAction": [FlutterZoomVideoSdkShareAction mapShareAction: shareAction],
-                @"shareOwner": [FlutterZoomVideoSdkUser mapUser: user],
-            }
-        });
-    }
-}
-
 - (void)onVideoCanvasSubscribeFail:(ZoomVideoSDKSubscribeFailReason)failReason user:(ZoomVideoSDKUser *_Nullable)user view:(UIView *_Nullable)view
 {
     if (self.eventSink) {
@@ -1290,30 +1175,6 @@ FlutterZoomVideoSdkSubSessionHelper* flutterZoomVideoSdkSubSessionHelper;
            @"name": @"onMyAudioSourceTypeChanged",
            @"message": @{
                @"device": [FlutterZoomVideoSdkAudioDevice mapAudioDevice:device],
-           }
-       });
-    }
-}
-
-- (void)onWhiteboardExported:(ZoomVideoSDKWhiteboardExportFormatType)format data:(NSData*_Nonnull)data {
-    if (self.eventSink) {
-        self.eventSink(@{
-           @"name": @"onWhiteboardExported",
-           @"message": @{
-               @"format": [[JSONConvert ZoomVideoSDKWhiteboardExportFormatTypeValuesReversed] objectForKey: @(format)],
-               @"data": [data base64EncodedStringWithOptions:0],
-           }
-       });
-    }
-}
-
--(void)onUserWhiteboardShareStatusChanged:(ZoomVideoSDKUser *_Nonnull)user whiteboardhelper:(ZoomVideoSDKWhiteboardHelper*_Nonnull)whiteboardHelper {
-    if (self.eventSink) {
-        self.eventSink(@{
-           @"name": @"onUserWhiteboardShareStatusChanged",
-           @"message": @{
-               @"user": [FlutterZoomVideoSdkUser mapUser: user],
-               @"status": [[JSONConvert ZoomVideoSDKWhiteboardStatusValuesReversed] objectForKey: @([user getWhiteboardStatus])],
            }
        });
     }

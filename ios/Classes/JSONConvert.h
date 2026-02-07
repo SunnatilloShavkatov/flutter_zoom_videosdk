@@ -29,8 +29,6 @@
 + (ZoomVideoSDKVideoResolution)ZoomVideoSDKVideoResolution:(id)json;
 + (NSDictionary *)ZoomVideoSDKVideoResolutionValuesReversed;
 
-+ (ZoomVideoSDKLiveStreamStatus)ZoomVideoSDKLiveStreamStatus:(id)json;
-+ (NSDictionary *)ZoomVideoSDKLiveStreamStatusValuesReversed;
 
 + (ZoomVideoSDKRecordingStatus)ZoomVideoSDKRecordingStatus:(id)json;
 + (NSDictionary *)ZoomVideoSDKRecordingStatusValuesReversed;
@@ -68,8 +66,6 @@
 + (ZoomVideoSDKNetworkStatus)ZoomVideoSDKNetworkStatus:(id)json;
 + (NSDictionary *)ZoomVideoSDKNetworkStatusValuesReversed;
 
-+ (ZoomVideoSDKVirtualBackgroundDataType)ZoomVideoSDKVirtualBackgroundDataType:(id)json;
-+ (NSDictionary *)ZoomVideoSDKVirtualBackgroundDataTypeValuesReversed;
 
 + (ZoomVideoSDKCRCProtocol)ZoomVideoSDKCRCProtocol:(id)json;
 + (NSDictionary *)ZoomVideoSDKCRCProtocolValuesReversed;
@@ -80,11 +76,6 @@
 + (ZoomVideoSDKChatPrivilegeType)ZoomVideoSDKChatPrivilegeType:(id)json;
 + (NSDictionary *)ZoomVideoSDKChatPrivilegeTypeValuesReversed;
 
-+ (ZoomVideoSDKAnnotationToolType)ZoomVideoSDKAnnotationToolType:(id)json;
-+ (NSDictionary *)ZoomVideoSDKAnnotationToolTypeValuesReversed;
-
-+ (ZoomVideoSDKAnnotationClearType)ZoomVideoSDKAnnotationClearType:(id)json;
-+ (NSDictionary *)ZoomVideoSDKAnnotationClearTypeValuesReversed;
 
 + (ZoomVideoSDKSubscribeFailReason)ZoomVideoSDKSubscribeFailReason:(id)json;
 + (NSDictionary *)ZoomVideoSDKSubscribeFailReasonValuesReversed;
@@ -110,11 +101,6 @@
 + (ZoomVideoSDKDataType)ZoomVideoSDKDataType:(id)json;
 + (NSDictionary *)ZoomVideoSDKDataTypeValuesReversed;
 
-+ (ZoomVideoSDKWhiteboardExportFormatType)ZoomVideoSDKWhiteboardExportFormatType:(id)json;
-+ (NSDictionary *)ZoomVideoSDKWhiteboardExportFormatTypeValuesReversed;
-
-+ (ZoomVideoSDKWhiteboardStatus)ZoomVideoSDKWhiteboardStatus:(id)json;
-+ (NSDictionary *)ZoomVideoSDKWhiteboardStatusValuesReversed;
 
 + (ZoomVideoSDKSubSessionStatus)ZoomVideoSDKSubSessionStatus:(id)json;
 + (NSDictionary *)ZoomVideoSDKSubSessionStatusValuesReversed;
