@@ -66,8 +66,4 @@ dependencies {
     implementation("com.google.crypto.tink:tink-android:1.8.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("us.zoom.videosdk:zoomvideosdk-core:2.4.0")
-    implementation("us.zoom.videosdk:zoomvideosdk-videoeffects:2.4.0")
-    implementation("us.zoom.videosdk:zoomvideosdk-annotation:2.4.0")
-    implementation("us.zoom.videosdk:zoomvideosdk-whiteboard:2.4.0")
-    implementation("us.zoom.videosdk:zoomvideosdk-broadcast-streaming:2.4.0")
 }
