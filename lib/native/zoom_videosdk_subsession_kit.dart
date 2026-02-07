@@ -8,20 +8,18 @@ class ZoomVideoSdkSubSessionKit {
   String subSessionName;
   List<ZoomVideoSdkSubSessionUser> subSessionUserList;
 
-  ZoomVideoSdkSubSessionKit(
-      this.subSessionId, this.subSessionName, this.subSessionUserList);
+  ZoomVideoSdkSubSessionKit(this.subSessionId, this.subSessionName, this.subSessionUserList);
 
   ZoomVideoSdkSubSessionKit.fromJson(Map<String, dynamic> json)
-      : subSessionId = json['subSessionId'],
-        subSessionName = json['subSessionName'],
-        subSessionUserList = (jsonDecode(json['subSessionUserList']) as List)
-            .map((e) => ZoomVideoSdkSubSessionUser.fromJson(e))
-            .toList();
+    : subSessionId = json['subSessionId'],
+      subSessionName = json['subSessionName'],
+      subSessionUserList = (jsonDecode(json['subSessionUserList']) as List)
+          .map((e) => ZoomVideoSdkSubSessionUser.fromJson(e))
+          .toList();
 
   Map<String, dynamic> toJson() => {
-        'subSessionId': subSessionId,
-        'subSessionName': subSessionName,
-        'subSessionUserList':
-            subSessionUserList.map((e) => e.toJson()).toList(),
-      };
+    'subSessionId': subSessionId,
+    'subSessionName': subSessionName,
+    'subSessionUserList': subSessionUserList.map((e) => e.toJson()).toList(),
+  };
 }

@@ -2,13 +2,11 @@ import 'package:flutter/services.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 ///@nodoc
-abstract class ZoomVideoSdkAudioSettingHelperPlatform
-    extends PlatformInterface {
+abstract class ZoomVideoSdkAudioSettingHelperPlatform extends PlatformInterface {
   ZoomVideoSdkAudioSettingHelperPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkAudioSettingHelperPlatform _instance =
-      ZoomVideoSdkAudioSettingHelper();
+  static ZoomVideoSdkAudioSettingHelperPlatform _instance = ZoomVideoSdkAudioSettingHelper();
   static ZoomVideoSdkAudioSettingHelperPlatform get instance => _instance;
   static set instance(ZoomVideoSdkAudioSettingHelperPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
@@ -16,29 +14,24 @@ abstract class ZoomVideoSdkAudioSettingHelperPlatform
   }
 
   Future<bool> isMicOriginalInputEnable() async {
-    throw UnimplementedError(
-        'isMicOriginalInputEnable() has not been implemented.');
+    throw UnimplementedError('isMicOriginalInputEnable() has not been implemented.');
   }
 
   Future<String> enableMicOriginalInput(bool enable) async {
-    throw UnimplementedError(
-        'enableMicOriginalInput() has not been implemented.');
+    throw UnimplementedError('enableMicOriginalInput() has not been implemented.');
   }
 
   Future<bool> isAutoAdjustMicVolumeEnabled() async {
-    throw UnimplementedError(
-        'isAutoAdjustMicVolumeEnabled() has not been implemented.');
+    throw UnimplementedError('isAutoAdjustMicVolumeEnabled() has not been implemented.');
   }
 
   Future<String> enableAutoAdjustMicVolume(bool enable) async {
-    throw UnimplementedError(
-        'enableAutoAdjustMicVolume() has not been implemented.');
+    throw UnimplementedError('enableAutoAdjustMicVolume() has not been implemented.');
   }
 }
 
 /// Audio setting interface.
-class ZoomVideoSdkAudioSettingHelper
-    extends ZoomVideoSdkAudioSettingHelperPlatform {
+class ZoomVideoSdkAudioSettingHelper extends ZoomVideoSdkAudioSettingHelperPlatform {
   final methodChannel = const MethodChannel('flutter_zoom_videosdk');
 
   /// Determine whether the original input of the microphone is enabled.

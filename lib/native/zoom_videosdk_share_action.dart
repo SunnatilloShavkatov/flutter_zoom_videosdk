@@ -10,24 +10,25 @@ class ZoomVideoSdkShareAction {
   String shareType;
 
   ZoomVideoSdkShareAction(
-      this.shareSourceId,
-      this.shareStatus,
-      this.subscribeFailReason,
-      this.isAnnotationPrivilegeEnabled,
-      this.shareType);
+    this.shareSourceId,
+    this.shareStatus,
+    this.subscribeFailReason,
+    this.isAnnotationPrivilegeEnabled,
+    this.shareType,
+  );
 
   ZoomVideoSdkShareAction.fromJson(Map<String, dynamic> json)
-      : shareSourceId = json['shareSourceId'],
-        shareStatus = json['shareStatus'],
-        subscribeFailReason = json['subscribeFailReason'],
-        isAnnotationPrivilegeEnabled = json['isAnnotationPrivilegeEnabled'],
-        shareType = json['shareType'];
+    : shareSourceId = json['shareSourceId'],
+      shareStatus = json['shareStatus'],
+      subscribeFailReason = json['subscribeFailReason'],
+      isAnnotationPrivilegeEnabled = json['isAnnotationPrivilegeEnabled'],
+      shareType = json['shareType'];
 
   Map<String, dynamic> toJson() => {
-        'shareSourceId': shareSourceId,
-        'shareStatus': shareStatus,
-        'subscribeFailReason': subscribeFailReason,
-        'isAnnotationPrivilegeEnabled': isAnnotationPrivilegeEnabled,
-        'shareType': shareType,
-      };
+    'shareSourceId': shareSourceId,
+    'shareStatus': shareStatus,
+    'subscribeFailReason': subscribeFailReason,
+    'isAnnotationPrivilegeEnabled': isAnnotationPrivilegeEnabled,
+    'shareType': shareType,
+  };
 }

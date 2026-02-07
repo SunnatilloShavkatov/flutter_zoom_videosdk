@@ -22,30 +22,23 @@ abstract class ZoomVideoSdkPhoneHelperPlatform extends PlatformInterface {
   }
 
   Future<String> getInviteByPhoneStatus() async {
-    throw UnimplementedError(
-        'getInviteByPhoneStatus() has not been implemented.');
+    throw UnimplementedError('getInviteByPhoneStatus() has not been implemented.');
   }
 
   Future<List<ZoomVideoSdkSupportCountryInfo>> getSupportCountryInfo() async {
-    throw UnimplementedError(
-        'getSupportCountryInfo() has not been implemented.');
+    throw UnimplementedError('getSupportCountryInfo() has not been implemented.');
   }
 
-  Future<String> inviteByPhone(
-      String countryCode, String phoneNumber, String name) async {
-    throw UnimplementedError(
-        'getSupportCountryInfo() has not been implemented.');
+  Future<String> inviteByPhone(String countryCode, String phoneNumber, String name) async {
+    throw UnimplementedError('getSupportCountryInfo() has not been implemented.');
   }
 
   Future<bool> isSupportPhoneFeature() async {
-    throw UnimplementedError(
-        'isSupportPhoneFeature() has not been implemented.');
+    throw UnimplementedError('isSupportPhoneFeature() has not been implemented.');
   }
 
-  Future<List<ZoomVideoSdkSessionDialInNumberInfo>?>
-      getSessionDialInNumbers() async {
-    throw UnimplementedError(
-        'getSessionDialInNumbers() has not been implemented.');
+  Future<List<ZoomVideoSdkSessionDialInNumberInfo>?> getSessionDialInNumbers() async {
+    throw UnimplementedError('getSessionDialInNumbers() has not been implemented.');
   }
 }
 
@@ -57,9 +50,7 @@ class ZoomVideoSdkPhoneHelper extends ZoomVideoSdkPhoneHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> cancelInviteByPhone() async {
-    return await methodChannel
-        .invokeMethod<String>('cancelInviteByPhone')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('cancelInviteByPhone').then<String>((String? value) => value ?? "");
   }
 
   /// Get the status of the invitation by phone.
@@ -81,8 +72,7 @@ class ZoomVideoSdkPhoneHelper extends ZoomVideoSdkPhoneHelperPlatform {
 
     var countryListJson = jsonDecode(countryInfoString!) as List;
     List<ZoomVideoSdkSupportCountryInfo> countryList = countryListJson
-        .map((countryJson) =>
-            ZoomVideoSdkSupportCountryInfo.fromJson(countryJson))
+        .map((countryJson) => ZoomVideoSdkSupportCountryInfo.fromJson(countryJson))
         .toList();
 
     return countryList;
@@ -94,8 +84,7 @@ class ZoomVideoSdkPhoneHelper extends ZoomVideoSdkPhoneHelperPlatform {
   /// <br />[name] The screen name of the specified user in the session.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
-  Future<String> inviteByPhone(
-      String countryCode, String phoneNumber, String name) async {
+  Future<String> inviteByPhone(String countryCode, String phoneNumber, String name) async {
     var params = <String, dynamic>{};
     params.putIfAbsent("countryCode", () => countryCode);
     params.putIfAbsent("phoneNumber", () => phoneNumber);
@@ -110,27 +99,22 @@ class ZoomVideoSdkPhoneHelper extends ZoomVideoSdkPhoneHelperPlatform {
   /// <br />Return true indicates join by phone is supported, otherwise false.
   @override
   Future<bool> isSupportPhoneFeature() async {
-    return await methodChannel
-        .invokeMethod<bool>('isSupportPhoneFeature')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isSupportPhoneFeature').then<bool>((bool? value) => value ?? false);
   }
 
   /// Get the list of dial in numbers supported by session.
   /// <br />If the function succeeds, the return value is the list of the call-in numbers.
   /// Otherwise failed.
   @override
-  Future<List<ZoomVideoSdkSessionDialInNumberInfo>?>
-      getSessionDialInNumbers() async {
+  Future<List<ZoomVideoSdkSessionDialInNumberInfo>?> getSessionDialInNumbers() async {
     var dialInNumberString = await methodChannel
         .invokeMethod<String?>('getSessionDialInNumbers')
         .then<String?>((String? value) => value);
 
     var dialInNumberListJson = jsonDecode(dialInNumberString!) as List;
-    List<ZoomVideoSdkSessionDialInNumberInfo> dialInNumberList =
-        dialInNumberListJson
-            .map((languageJson) =>
-                ZoomVideoSdkSessionDialInNumberInfo.fromJson(languageJson))
-            .toList();
+    List<ZoomVideoSdkSessionDialInNumberInfo> dialInNumberList = dialInNumberListJson
+        .map((languageJson) => ZoomVideoSdkSessionDialInNumberInfo.fromJson(languageJson))
+        .toList();
 
     return dialInNumberList;
   }

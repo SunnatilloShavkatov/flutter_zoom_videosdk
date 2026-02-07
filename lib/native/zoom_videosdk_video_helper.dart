@@ -52,18 +52,15 @@ abstract class ZoomVideoSdkVideoHelperPlatform extends PlatformInterface {
   }
 
   Future<bool> isOriginalAspectRatioEnabled() async {
-    throw UnimplementedError(
-        'isOriginalAspectRatioEnabled() has not been implemented.');
+    throw UnimplementedError('isOriginalAspectRatioEnabled() has not been implemented.');
   }
 
   Future<bool> enableOriginalAspectRatio(bool enable) async {
-    throw UnimplementedError(
-        'enableOriginalAspectRatio() has not been implemented.');
+    throw UnimplementedError('enableOriginalAspectRatio() has not been implemented.');
   }
 
   Future<bool> turnOnOrOffFlashlight(bool isOn) async {
-    throw UnimplementedError(
-        'turnOnOrOffFlashlight() has not been implemented.');
+    throw UnimplementedError('turnOnOrOffFlashlight() has not been implemented.');
   }
 
   Future<bool> isSupportFlashlight() async {
@@ -83,13 +80,11 @@ abstract class ZoomVideoSdkVideoHelperPlatform extends PlatformInterface {
   }
 
   Future<String> unSpotlightAllVideos() async {
-    throw UnimplementedError(
-        'unSpotlightAllVideos() has not been implemented.');
+    throw UnimplementedError('unSpotlightAllVideos() has not been implemented.');
   }
 
   Future<List<ZoomVideoSdkUser>?> getSpotlightedVideoUserList() async {
-    throw UnimplementedError(
-        'unSpotlightAllVideos() has not been implemented.');
+    throw UnimplementedError('unSpotlightAllVideos() has not been implemented.');
   }
 }
 
@@ -101,18 +96,14 @@ class ZoomVideoSdkVideoHelper extends ZoomVideoSdkVideoHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> startVideo() async {
-    return await methodChannel
-        .invokeMethod<String>('startVideo')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('startVideo').then<String>((String? value) => value ?? "");
   }
 
   /// Stop sending local video data from the camera.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> stopVideo() async {
-    return await methodChannel
-        .invokeMethod<String>('stopVideo')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('stopVideo').then<String>((String? value) => value ?? "");
   }
 
   /// If [deviceId] is null, it'll switch to the next available camera. Otherwise, it will switch to the camera with the [deviceId]
@@ -122,9 +113,7 @@ class ZoomVideoSdkVideoHelper extends ZoomVideoSdkVideoHelperPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("deviceId", () => deviceId);
 
-    return await methodChannel
-        .invokeMethod<bool>('switchCamera', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('switchCamera', params).then<bool>((bool? value) => value ?? false);
   }
 
   /// Rotate the video when the device is rotated.
@@ -137,9 +126,7 @@ class ZoomVideoSdkVideoHelper extends ZoomVideoSdkVideoHelperPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("rotation", () => rotation);
 
-    return await methodChannel
-        .invokeMethod<bool>('rotateMyVideo', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('rotateMyVideo', params).then<bool>((bool? value) => value ?? false);
   }
 
   /// Get the list of camera devices available to share the video.
@@ -162,18 +149,14 @@ class ZoomVideoSdkVideoHelper extends ZoomVideoSdkVideoHelperPlatform {
   /// <br />Return number of cameras.
   @override
   Future<num> getNumberOfCameras() async {
-    return await methodChannel
-        .invokeMethod<num>('getNumberOfCameras')
-        .then<num>((num? value) => value ?? 0);
+    return await methodChannel.invokeMethod<num>('getNumberOfCameras').then<num>((num? value) => value ?? 0);
   }
 
   /// Call this method to query mirror my video enable.
   /// <br />Return true if the mirror effect enabled, false otherwise.
   @override
   Future<bool> isMyVideoMirrored() async {
-    return await methodChannel
-        .invokeMethod<bool>('isMyVideoMirrored')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isMyVideoMirrored').then<bool>((bool? value) => value ?? false);
   }
 
   /// Call this method to mirror my video.
@@ -226,18 +209,14 @@ class ZoomVideoSdkVideoHelper extends ZoomVideoSdkVideoHelperPlatform {
   /// <br />Return true if the device supports flashlight. Otherwise, this function returns false.
   @override
   Future<bool> isSupportFlashlight() async {
-    return await methodChannel
-        .invokeMethod<bool>('isSupportFlashlight')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isSupportFlashlight').then<bool>((bool? value) => value ?? false);
   }
 
   /// Check if the flashlight is on.
   /// <br />Return true if the flashlight is on. Otherwise, this function returns false.
   @override
   Future<bool> isFlashlightOn() async {
-    return await methodChannel
-        .invokeMethod<bool>('isFlashlightOn')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isFlashlightOn').then<bool>((bool? value) => value ?? false);
   }
 
   /// Spotlight the video of the specified user.
@@ -282,9 +261,7 @@ class ZoomVideoSdkVideoHelper extends ZoomVideoSdkVideoHelperPlatform {
         .then<String?>((String? value) => value);
 
     var userListJson = jsonDecode(userListString!) as List;
-    List<ZoomVideoSdkUser> userList = userListJson
-        .map((userJson) => ZoomVideoSdkUser.fromJson(userJson))
-        .toList();
+    List<ZoomVideoSdkUser> userList = userListJson.map((userJson) => ZoomVideoSdkUser.fromJson(userJson)).toList();
 
     return userList;
   }

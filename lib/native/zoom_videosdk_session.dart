@@ -50,26 +50,19 @@ abstract class ZoomVideoSdkSessionPlatform extends PlatformInterface {
   }
 
   Future<String?> getSessionPhonePasscode() async {
-    throw UnimplementedError(
-        'getSessionPhonePasscode() has not been implemented.');
+    throw UnimplementedError('getSessionPhonePasscode() has not been implemented.');
   }
 
-  Future<ZoomVideoSdkSessionAudioStatisticsInfo?>
-      getAudioStatisticsInfo() async {
-    throw UnimplementedError(
-        'getAudioStatisticsInfo() has not been implemented.');
+  Future<ZoomVideoSdkSessionAudioStatisticsInfo?> getAudioStatisticsInfo() async {
+    throw UnimplementedError('getAudioStatisticsInfo() has not been implemented.');
   }
 
-  Future<ZoomVideoSdkSessionVideoStatisticsInfo?>
-      getVideoStatisticsInfo() async {
-    throw UnimplementedError(
-        'getVideoStatisticsInfo() has not been implemented.');
+  Future<ZoomVideoSdkSessionVideoStatisticsInfo?> getVideoStatisticsInfo() async {
+    throw UnimplementedError('getVideoStatisticsInfo() has not been implemented.');
   }
 
-  Future<ZoomVideoSdkSessionShareStatisticsInfo?>
-      getShareStatisticsInfo() async {
-    throw UnimplementedError(
-        'getShareStatisticsInfo() has not been implemented.');
+  Future<ZoomVideoSdkSessionShareStatisticsInfo?> getShareStatisticsInfo() async {
+    throw UnimplementedError('getShareStatisticsInfo() has not been implemented.');
   }
 }
 
@@ -81,18 +74,14 @@ class ZoomVideoSdkSession extends ZoomVideoSdkSessionPlatform {
   /// <br />Return session name
   @override
   Future<String?> getSessionName() async {
-    return await methodChannel
-        .invokeMethod<String?>('getSessionName')
-        .then<String?>((String? value) => value);
+    return await methodChannel.invokeMethod<String?>('getSessionName').then<String?>((String? value) => value);
   }
 
   /// Get the session's password.
   /// <br />Return session's password
   @override
   Future<String> getSessionPassword() async {
-    var pwd = await methodChannel
-        .invokeMethod<String?>('getSessionPassword')
-        .then<String?>((String? value) => value);
+    var pwd = await methodChannel.invokeMethod<String?>('getSessionPassword').then<String?>((String? value) => value);
     return (pwd == null) ? "" : pwd;
   }
 
@@ -100,9 +89,7 @@ class ZoomVideoSdkSession extends ZoomVideoSdkSessionPlatform {
   /// <br />Return the user object [ZoomVideoSdkUser]
   @override
   Future<ZoomVideoSdkUser?> getMySelf() async {
-    var userString = await methodChannel
-        .invokeMethod<String?>('getMySelf')
-        .then<String?>((String? value) => value);
+    var userString = await methodChannel.invokeMethod<String?>('getMySelf').then<String?>((String? value) => value);
 
     Map<String, dynamic> userMap = jsonDecode(userString!);
     var zoomVideoSdkUser = ZoomVideoSdkUser.fromJson(userMap);
@@ -118,9 +105,7 @@ class ZoomVideoSdkSession extends ZoomVideoSdkSessionPlatform {
         .then<String?>((String? value) => value);
 
     var userListJson = jsonDecode(userListString!) as List;
-    List<ZoomVideoSdkUser> userList = userListJson
-        .map((userJson) => ZoomVideoSdkUser.fromJson(userJson))
-        .toList();
+    List<ZoomVideoSdkUser> userList = userListJson.map((userJson) => ZoomVideoSdkUser.fromJson(userJson)).toList();
 
     return userList;
   }
@@ -142,9 +127,7 @@ class ZoomVideoSdkSession extends ZoomVideoSdkSessionPlatform {
   /// <br />Return host user name
   @override
   Future<String?> getSessionHostName() async {
-    return await methodChannel
-        .invokeMethod<String?>('getSessionHostName')
-        .then<String?>((String? value) => value);
+    return await methodChannel.invokeMethod<String?>('getSessionHostName').then<String?>((String? value) => value);
   }
 
   /// Get the session Id
@@ -152,71 +135,59 @@ class ZoomVideoSdkSession extends ZoomVideoSdkSessionPlatform {
   /// <br />Return session id
   @override
   Future<String?> getSessionID() async {
-    return await methodChannel
-        .invokeMethod<String?>('getSessionID')
-        .then<String?>((String? value) => value);
+    return await methodChannel.invokeMethod<String?>('getSessionID').then<String?>((String? value) => value);
   }
 
   /// Get the current session number.
   /// <br />Return the current meeting number if the function succeeds, otherwise returns ZERO(0)
   @override
   Future<String?> getSessionNumber() async {
-    return await methodChannel
-        .invokeMethod<String?>('getSessionNumber')
-        .then<String?>((String? value) => value);
+    return await methodChannel.invokeMethod<String?>('getSessionNumber').then<String?>((String? value) => value);
   }
 
   /// Get the session phone passcode.
   /// <br />Return the session phone passcode if the function succeeds, otherwise returns null
   @override
   Future<String?> getSessionPhonePasscode() async {
-    return await methodChannel
-        .invokeMethod<String?>('getSessionPhonePasscode')
-        .then<String?>((String? value) => value);
+    return await methodChannel.invokeMethod<String?>('getSessionPhonePasscode').then<String?>((String? value) => value);
   }
 
   /// Get the session's audio statistic information.
   /// <br />Return [ZoomVideoSdkSessionAudioStatisticsInfo]
   @override
-  Future<ZoomVideoSdkSessionAudioStatisticsInfo?>
-      getAudioStatisticsInfo() async {
+  Future<ZoomVideoSdkSessionAudioStatisticsInfo?> getAudioStatisticsInfo() async {
     var infoString = await methodChannel
         .invokeMethod<String?>('getAudioStatisticsInfo')
         .then<String?>((String? value) => value);
 
     Map<String, dynamic> infoMap = jsonDecode(infoString!);
-    var sessionAudioStatisticsInfo =
-        ZoomVideoSdkSessionAudioStatisticsInfo.fromJson(infoMap);
+    var sessionAudioStatisticsInfo = ZoomVideoSdkSessionAudioStatisticsInfo.fromJson(infoMap);
     return sessionAudioStatisticsInfo;
   }
 
   /// Get the session's video statistic information.
   /// <br />Return [ZoomVideoSdkSessionVideoStatisticsInfo]
   @override
-  Future<ZoomVideoSdkSessionVideoStatisticsInfo?>
-      getVideoStatisticsInfo() async {
+  Future<ZoomVideoSdkSessionVideoStatisticsInfo?> getVideoStatisticsInfo() async {
     var infoString = await methodChannel
         .invokeMethod<String?>('getVideoStatisticsInfo')
         .then<String?>((String? value) => value);
 
     Map<String, dynamic> infoMap = jsonDecode(infoString!);
-    var sessionVideoStatisticsInfo =
-        ZoomVideoSdkSessionVideoStatisticsInfo.fromJson(infoMap);
+    var sessionVideoStatisticsInfo = ZoomVideoSdkSessionVideoStatisticsInfo.fromJson(infoMap);
     return sessionVideoStatisticsInfo;
   }
 
   /// Get the session's screen share statistic information.
   /// <br />Return [ZoomVideoSDKSessionASVStatisticInfo]
   @override
-  Future<ZoomVideoSdkSessionShareStatisticsInfo?>
-      getShareStatisticsInfo() async {
+  Future<ZoomVideoSdkSessionShareStatisticsInfo?> getShareStatisticsInfo() async {
     var infoString = await methodChannel
         .invokeMethod<String?>('getShareStatisticsInfo')
         .then<String?>((String? value) => value);
 
     Map<String, dynamic> infoMap = jsonDecode(infoString!);
-    var sessionShareStatisticsInfo =
-        ZoomVideoSdkSessionShareStatisticsInfo.fromJson(infoMap);
+    var sessionShareStatisticsInfo = ZoomVideoSdkSessionShareStatisticsInfo.fromJson(infoMap);
     return sessionShareStatisticsInfo;
   }
 }

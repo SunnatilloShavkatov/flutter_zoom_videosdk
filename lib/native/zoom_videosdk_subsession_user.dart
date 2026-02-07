@@ -8,11 +8,8 @@ class ZoomVideoSdkSubSessionUser {
   ZoomVideoSdkSubSessionUser(this.userGUID, this.userName);
 
   ZoomVideoSdkSubSessionUser.fromJson(Map<String, dynamic> json)
-      : userGUID = json['userGUID'],
-        userName = json['userName'];
+    : userGUID = json['userGUID'],
+      userName = json['userName'];
 
-  Map<String, dynamic> toJson() => {
-        'userGUID': userGUID,
-        'userName': userName,
-      };
+  Map<String, dynamic> toJson() => {'userGUID': userGUID, 'userName': userName};
 }

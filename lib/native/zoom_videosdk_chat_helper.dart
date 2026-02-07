@@ -18,8 +18,7 @@ abstract class ZoomVideoSdkChatHelperPlatform extends PlatformInterface {
   }
 
   Future<bool> isPrivateChatDisabled() async {
-    throw UnimplementedError(
-        'isPrivateChatDisabled() has not been implemented.');
+    throw UnimplementedError('isPrivateChatDisabled() has not been implemented.');
   }
 
   Future<String> sendChatToUser(String userId, String message) async {
@@ -35,8 +34,7 @@ abstract class ZoomVideoSdkChatHelperPlatform extends PlatformInterface {
   }
 
   Future<bool> canChatMessageBeDeleted(String msgId) async {
-    throw UnimplementedError(
-        'canChatMessageBeDeleted() has not been implemented.');
+    throw UnimplementedError('canChatMessageBeDeleted() has not been implemented.');
   }
 
   Future<String> changeChatPrivilege(String privilegeType) async {
@@ -56,18 +54,14 @@ class ZoomVideoSdkChatHelper extends ZoomVideoSdkChatHelperPlatform {
   /// <br />Return true if chat is disabled, otherwise false.
   @override
   Future<bool> isChatDisabled() async {
-    return await methodChannel
-        .invokeMethod<bool>('isChatDisabled')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isChatDisabled').then<bool>((bool? value) => value ?? false);
   }
 
   /// Determine whether private chat is disabled.
   /// <br />Return true if private chat is disabled, otherwise false.
   @override
   Future<bool> isPrivateChatDisabled() async {
-    return await methodChannel
-        .invokeMethod<bool>('isPrivateChatDisabled')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isPrivateChatDisabled').then<bool>((bool? value) => value ?? false);
   }
 
   /// Call this method to send a chat message to a specific user.
@@ -143,8 +137,6 @@ class ZoomVideoSdkChatHelper extends ZoomVideoSdkChatHelperPlatform {
   /// <br />Return the result of participant chat privilege.
   @override
   Future<String> getChatPrivilege() async {
-    return await methodChannel
-        .invokeMethod<String>('getChatPrivilege')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('getChatPrivilege').then<String>((String? value) => value ?? "");
   }
 }

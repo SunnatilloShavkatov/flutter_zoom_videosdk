@@ -11,11 +11,8 @@ class ZoomVideoSdkAudioDevice {
   ZoomVideoSdkAudioDevice(this.deviceName, this.audioSourceType);
 
   ZoomVideoSdkAudioDevice.fromJson(Map<String, dynamic> json)
-      : deviceName = json['deviceName'],
-        audioSourceType = json['audioSourceType'];
+    : deviceName = json['deviceName'],
+      audioSourceType = json['audioSourceType'];
 
-  Map<String, dynamic> toJson() => {
-        'deviceName': deviceName,
-        'audioSourceType': audioSourceType,
-      };
+  Map<String, dynamic> toJson() => {'deviceName': deviceName, 'audioSourceType': audioSourceType};
 }

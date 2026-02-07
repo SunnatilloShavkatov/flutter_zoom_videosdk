@@ -6,8 +6,7 @@ abstract class ZoomVideoSdkTestAudioHelperPlatform extends PlatformInterface {
   ZoomVideoSdkTestAudioHelperPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkTestAudioHelperPlatform _instance =
-      ZoomVideoSdkTestAudioHelper();
+  static ZoomVideoSdkTestAudioHelperPlatform _instance = ZoomVideoSdkTestAudioHelper();
   static ZoomVideoSdkTestAudioHelperPlatform get instance => _instance;
   static set instance(ZoomVideoSdkTestAudioHelperPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
@@ -44,9 +43,7 @@ class ZoomVideoSdkTestAudioHelper extends ZoomVideoSdkTestAudioHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> startMicTest() async {
-    return await methodChannel
-        .invokeMethod<String>('startMicTest')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('startMicTest').then<String>((String? value) => value ?? "");
   }
 
   /// Stop the microphone test.
@@ -55,9 +52,7 @@ class ZoomVideoSdkTestAudioHelper extends ZoomVideoSdkTestAudioHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> stopMicTest() async {
-    return await methodChannel
-        .invokeMethod<String>('stopMicTest')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('stopMicTest').then<String>((String? value) => value ?? "");
   }
 
   /// Play the microphone recorded sound.
@@ -66,18 +61,14 @@ class ZoomVideoSdkTestAudioHelper extends ZoomVideoSdkTestAudioHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> playMicTest() async {
-    return await methodChannel
-        .invokeMethod<String>('playMicTest')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('playMicTest').then<String>((String? value) => value ?? "");
   }
 
   /// Start the speaker test.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> startSpeakerTest() async {
-    return await methodChannel
-        .invokeMethod<String>('startSpeakerTest')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('startSpeakerTest').then<String>((String? value) => value ?? "");
   }
 
   /// Stop the speaker test.
@@ -86,8 +77,6 @@ class ZoomVideoSdkTestAudioHelper extends ZoomVideoSdkTestAudioHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> stopSpeakerTest() async {
-    return await methodChannel
-        .invokeMethod<String>('stopSpeakerTest')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('stopSpeakerTest').then<String>((String? value) => value ?? "");
   }
 }

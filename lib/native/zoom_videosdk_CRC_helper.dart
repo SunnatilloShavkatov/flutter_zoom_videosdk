@@ -26,8 +26,7 @@ abstract class ZoomVideoSdkCRCHelperPlatform extends PlatformInterface {
   }
 
   Future<String> getSessionSIPAddress() async {
-    throw UnimplementedError(
-        'getSessionSIPAddress() has not been implemented.');
+    throw UnimplementedError('getSessionSIPAddress() has not been implemented.');
   }
 }
 
@@ -40,9 +39,7 @@ class ZoomVideoSdkCRCHelper extends ZoomVideoSdkCRCHelperPlatform {
   /// Note: only get the correct value after join session
   @override
   Future<bool> isCRCEnabled() async {
-    return await methodChannel
-        .invokeMethod<bool>('isCRCEnabled')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isCRCEnabled').then<bool>((bool? value) => value ?? false);
   }
 
   /// Calls CRC device. Only available for the host/co-host.
@@ -65,9 +62,7 @@ class ZoomVideoSdkCRCHelper extends ZoomVideoSdkCRCHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> cancelCallCRCDevice() async {
-    return await methodChannel
-        .invokeMethod<String>('cancelCallCRCDevice')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('cancelCallCRCDevice').then<String>((String? value) => value ?? "");
   }
 
   /// Get the session SIP address.

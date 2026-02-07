@@ -6,8 +6,7 @@ abstract class ZoomVideoSdkRecordingHelperPlatform extends PlatformInterface {
   ZoomVideoSdkRecordingHelperPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkRecordingHelperPlatform _instance =
-      ZoomVideoSdkRecordingHelper();
+  static ZoomVideoSdkRecordingHelperPlatform _instance = ZoomVideoSdkRecordingHelper();
   static ZoomVideoSdkRecordingHelperPlatform get instance => _instance;
   static set instance(ZoomVideoSdkRecordingHelperPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
@@ -31,13 +30,11 @@ abstract class ZoomVideoSdkRecordingHelperPlatform extends PlatformInterface {
   }
 
   Future<String> resumeCloudRecording() async {
-    throw UnimplementedError(
-        'resumeCloudRecording() has not been implemented.');
+    throw UnimplementedError('resumeCloudRecording() has not been implemented.');
   }
 
   Future<String> getCloudRecordingStatus() async {
-    throw UnimplementedError(
-        'getCloudRecordingStatus() has not been implemented.');
+    throw UnimplementedError('getCloudRecordingStatus() has not been implemented.');
   }
 }
 
@@ -49,9 +46,7 @@ class ZoomVideoSdkRecordingHelper extends ZoomVideoSdkRecordingHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the current user meets the requirements to start cloud recording.
   @override
   Future<String> canStartRecording() async {
-    return await methodChannel
-        .invokeMethod<String>('canStartRecording')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('canStartRecording').then<String>((String? value) => value ?? "");
   }
 
   /// Start cloud recording.
@@ -59,9 +54,7 @@ class ZoomVideoSdkRecordingHelper extends ZoomVideoSdkRecordingHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the start cloud recording request was successful.
   @override
   Future<String> startCloudRecording() async {
-    return await methodChannel
-        .invokeMethod<String>('startCloudRecording')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('startCloudRecording').then<String>((String? value) => value ?? "");
   }
 
   /// Stop cloud recording.
@@ -70,9 +63,7 @@ class ZoomVideoSdkRecordingHelper extends ZoomVideoSdkRecordingHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the stop cloud recording request was successful.
   @override
   Future<String> stopCloudRecording() async {
-    return await methodChannel
-        .invokeMethod<String>('stopCloudRecording')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('stopCloudRecording').then<String>((String? value) => value ?? "");
   }
 
   /// Pause the ongoing cloud recording.
@@ -81,9 +72,7 @@ class ZoomVideoSdkRecordingHelper extends ZoomVideoSdkRecordingHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the stop cloud recording request was successful.
   @override
   Future<String> pauseCloudRecording() async {
-    return await methodChannel
-        .invokeMethod<String>('pauseCloudRecording')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('pauseCloudRecording').then<String>((String? value) => value ?? "");
   }
 
   /// Resume the previously paused cloud recording.

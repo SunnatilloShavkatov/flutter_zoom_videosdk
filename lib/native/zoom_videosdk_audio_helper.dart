@@ -42,8 +42,7 @@ abstract class ZoomVideoSdkAudioHelperPlatform extends PlatformInterface {
   }
 
   Future<String> allowAudioUnmutedBySelf(bool allowUnmute) async {
-    throw UnimplementedError(
-        'allowAudioUnmutedBySelf() has not been implemented.');
+    throw UnimplementedError('allowAudioUnmutedBySelf() has not been implemented.');
   }
 
   Future<void> setSpeaker(bool isOn) async {
@@ -83,18 +82,15 @@ abstract class ZoomVideoSdkAudioHelperPlatform extends PlatformInterface {
   }
 
   Future<String> switchToAudioSourceType(String deviceName) async {
-    throw UnimplementedError(
-        'switchToAudioSourceType() has not been implemented.');
+    throw UnimplementedError('switchToAudioSourceType() has not been implemented.');
   }
 
   Future<List<ZoomVideoSdkAudioDevice>?> getAvailableAudioOutputRoute() async {
-    throw UnimplementedError(
-        'getAvailableAudioOutputRoute() has not been implemented.');
+    throw UnimplementedError('getAvailableAudioOutputRoute() has not been implemented.');
   }
 
   Future<ZoomVideoSdkAudioDevice> getCurrentAudioOutputRoute() async {
-    throw UnimplementedError(
-        'getCurrentAudioOutputRoute() has not been implemented.');
+    throw UnimplementedError('getCurrentAudioOutputRoute() has not been implemented.');
   }
 
   Future<bool> setAudioOutputRoute(String deviceName) async {
@@ -102,13 +98,11 @@ abstract class ZoomVideoSdkAudioHelperPlatform extends PlatformInterface {
   }
 
   Future<List<ZoomVideoSdkAudioDevice>?> getAvailableAudioInputsDevice() async {
-    throw UnimplementedError(
-        'getAvailableAudioInputsDevice() has not been implemented.');
+    throw UnimplementedError('getAvailableAudioInputsDevice() has not been implemented.');
   }
 
   Future<ZoomVideoSdkAudioDevice> getCurrentAudioInputDevice() async {
-    throw UnimplementedError(
-        'getCurrentAudioInputDevice() has not been implemented.');
+    throw UnimplementedError('getCurrentAudioInputDevice() has not been implemented.');
   }
 
   Future<bool> setAudioInputDevice(String deviceName) async {
@@ -124,18 +118,14 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   /// <br />Return true: enable false: disable (some pad not support telephony,or some device not support)
   @override
   Future<bool> canSwitchSpeaker() async {
-    return await methodChannel
-        .invokeMethod<bool>('canSwitchSpeaker')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('canSwitchSpeaker').then<bool>((bool? value) => value ?? false);
   }
 
   /// Get audio speaker status
   /// <br />Return true: speaker false: headset or earSpeaker
   @override
   Future<bool> getSpeakerStatus() async {
-    return await methodChannel
-        .invokeMethod<bool>('getSpeakerStatus')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('getSpeakerStatus').then<bool>((bool? value) => value ?? false);
   }
 
   /// mute user's voip audio by [userId]
@@ -145,9 +135,7 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<String>('muteAudio', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('muteAudio', params).then<String>((String? value) => value ?? "");
   }
 
   /// unmute user's voip audio by [userId]
@@ -157,9 +145,7 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<String>('unMuteAudio', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('unMuteAudio', params).then<String>((String? value) => value ?? "");
   }
 
   /// Mute all user's audio except my self.
@@ -179,9 +165,7 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> unmuteAllAudio() async {
-    return await methodChannel
-        .invokeMethod<String>('unmuteAllAudio')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('unmuteAllAudio').then<String>((String? value) => value ?? "");
   }
 
   /// Allow the others unmute by themself or not. For host or manager.
@@ -212,45 +196,35 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> startAudio() async {
-    return await methodChannel
-        .invokeMethod<String>('startAudio')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('startAudio').then<String>((String? value) => value ?? "");
   }
 
   /// Stop voip
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> stopAudio() async {
-    return await methodChannel
-        .invokeMethod<String>('stopAudio')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('stopAudio').then<String>((String? value) => value ?? "");
   }
 
   /// subscribe audio raw data.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> subscribe() async {
-    return await methodChannel
-        .invokeMethod<String>('startAudio')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('startAudio').then<String>((String? value) => value ?? "");
   }
 
   /// unsubscribe audio raw data
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> unSubscribe() async {
-    return await methodChannel
-        .invokeMethod<String>('startAudio')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('startAudio').then<String>((String? value) => value ?? "");
   }
 
   /// reset audio session, it will stop and start audio session
   /// <br />Return true indicates success, otherwise false.
   @override
   Future<bool> resetAudioSession() async {
-    return await methodChannel
-        .invokeMethod<bool>('startAudio')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('startAudio').then<bool>((bool? value) => value ?? false);
   }
 
   /// clean audio session, it will release audio session
@@ -265,8 +239,7 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   @override
   Future<List<ZoomVideoSdkAudioDevice>?> getAudioDeviceList() async {
     if (!Platform.isAndroid) {
-      throw UnimplementedError(
-          'getAudioDeviceList() is only implemented for Android.');
+      throw UnimplementedError('getAudioDeviceList() is only implemented for Android.');
     }
     var audioDeviceListString = await methodChannel
         .invokeMethod<String?>('getAudioDeviceList')
@@ -286,16 +259,14 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   @override
   Future<ZoomVideoSdkAudioDevice> getUsingAudioDevice() async {
     if (!Platform.isAndroid) {
-      throw UnimplementedError(
-          'getUsingAudioDevice() is only implemented for Android.');
+      throw UnimplementedError('getUsingAudioDevice() is only implemented for Android.');
     }
     var audioDeviceString = await methodChannel
         .invokeMethod<String?>('getUsingAudioDevice')
         .then<String?>((String? value) => value);
 
     Map<String, dynamic> audioDeviceMap = jsonDecode(audioDeviceString!);
-    ZoomVideoSdkAudioDevice audioDevice =
-        ZoomVideoSdkAudioDevice.fromJson(audioDeviceMap);
+    ZoomVideoSdkAudioDevice audioDevice = ZoomVideoSdkAudioDevice.fromJson(audioDeviceMap);
     return audioDevice;
   }
 
@@ -306,8 +277,7 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   @override
   Future<String> switchToAudioSourceType(String deviceName) async {
     if (!Platform.isAndroid) {
-      throw UnimplementedError(
-          'switchToAudioSourceType() is only implemented for Android.');
+      throw UnimplementedError('switchToAudioSourceType() is only implemented for Android.');
     }
     var params = <String, dynamic>{};
     params.putIfAbsent("deviceName", () => deviceName);
@@ -323,8 +293,7 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   @override
   Future<List<ZoomVideoSdkAudioDevice>?> getAvailableAudioOutputRoute() async {
     if (!Platform.isIOS) {
-      throw UnimplementedError(
-          'getAvailableAudioOutputRoute() is only implemented for iOS.');
+      throw UnimplementedError('getAvailableAudioOutputRoute() is only implemented for iOS.');
     }
     var audioDeviceListString = await methodChannel
         .invokeMethod<String?>('getAvailableAudioOutputRoute')
@@ -344,16 +313,14 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   @override
   Future<ZoomVideoSdkAudioDevice> getCurrentAudioOutputRoute() async {
     if (!Platform.isIOS) {
-      throw UnimplementedError(
-          'getCurrentAudioOutputRoute() is only implemented for iOS.');
+      throw UnimplementedError('getCurrentAudioOutputRoute() is only implemented for iOS.');
     }
     var audioDeviceString = await methodChannel
         .invokeMethod<String?>('getCurrentAudioOutputRoute')
         .then<String?>((String? value) => value);
 
     Map<String, dynamic> audioDeviceMap = jsonDecode(audioDeviceString!);
-    ZoomVideoSdkAudioDevice audioDevice =
-        ZoomVideoSdkAudioDevice.fromJson(audioDeviceMap);
+    ZoomVideoSdkAudioDevice audioDevice = ZoomVideoSdkAudioDevice.fromJson(audioDeviceMap);
     return audioDevice;
   }
 
@@ -364,8 +331,7 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   @override
   Future<bool> setAudioOutputRoute(String deviceName) async {
     if (!Platform.isIOS) {
-      throw UnimplementedError(
-          'setAudioOutputRoute() is only implemented for iOS.');
+      throw UnimplementedError('setAudioOutputRoute() is only implemented for iOS.');
     }
     var params = <String, dynamic>{};
     params.putIfAbsent("deviceName", () => deviceName);
@@ -381,8 +347,7 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   @override
   Future<List<ZoomVideoSdkAudioDevice>?> getAvailableAudioInputsDevice() async {
     if (!Platform.isIOS) {
-      throw UnimplementedError(
-          'getAvailableAudioInputsDevice() is only implemented for iOS.');
+      throw UnimplementedError('getAvailableAudioInputsDevice() is only implemented for iOS.');
     }
     var audioDeviceListString = await methodChannel
         .invokeMethod<String?>('getAvailableAudioInputsDevice')
@@ -402,16 +367,14 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   @override
   Future<ZoomVideoSdkAudioDevice> getCurrentAudioInputDevice() async {
     if (!Platform.isIOS) {
-      throw UnimplementedError(
-          'getCurrentAudioInputDevice() is only implemented for iOS.');
+      throw UnimplementedError('getCurrentAudioInputDevice() is only implemented for iOS.');
     }
     var audioDeviceString = await methodChannel
         .invokeMethod<String?>('getCurrentAudioInputDevice')
         .then<String?>((String? value) => value);
 
     Map<String, dynamic> audioDeviceMap = jsonDecode(audioDeviceString!);
-    ZoomVideoSdkAudioDevice audioDevice =
-        ZoomVideoSdkAudioDevice.fromJson(audioDeviceMap);
+    ZoomVideoSdkAudioDevice audioDevice = ZoomVideoSdkAudioDevice.fromJson(audioDeviceMap);
     return audioDevice;
   }
 
@@ -422,8 +385,7 @@ class ZoomVideoSdkAudioHelper extends ZoomVideoSdkAudioHelperPlatform {
   @override
   Future<bool> setAudioInputDevice(String deviceName) async {
     if (!Platform.isIOS) {
-      throw UnimplementedError(
-          'setAudioInputDevice() is only implemented for iOS.');
+      throw UnimplementedError('setAudioInputDevice() is only implemented for iOS.');
     }
     var params = <String, dynamic>{};
     params.putIfAbsent("deviceName", () => deviceName);

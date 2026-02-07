@@ -34,8 +34,6 @@ class ZoomVideoSdkCmdChannel extends ZoomVideoSdkCmdChannelPlatform {
     params.putIfAbsent("receiverId", () => receiverId);
     params.putIfAbsent("strCmd", () => strCmd);
 
-    return await methodChannel
-        .invokeMethod<String>('sendCommand', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('sendCommand', params).then<String>((String? value) => value ?? "");
   }
 }

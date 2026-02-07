@@ -1,13 +1,11 @@
 import 'package:flutter/services.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-abstract class ZoomVideoSdkVideoStatisticInfoPlatform
-    extends PlatformInterface {
+abstract class ZoomVideoSdkVideoStatisticInfoPlatform extends PlatformInterface {
   ZoomVideoSdkVideoStatisticInfoPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkVideoStatisticInfoPlatform _instance =
-      ZoomVideoSdkVideoStatisticInfo("0");
+  static ZoomVideoSdkVideoStatisticInfoPlatform _instance = ZoomVideoSdkVideoStatisticInfo("0");
   static ZoomVideoSdkVideoStatisticInfoPlatform get instance => _instance;
   static set instance(ZoomVideoSdkVideoStatisticInfoPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
@@ -32,8 +30,7 @@ abstract class ZoomVideoSdkVideoStatisticInfoPlatform
 }
 
 /// Zoom Video SDK Video Statistic Information
-class ZoomVideoSdkVideoStatisticInfo
-    extends ZoomVideoSdkVideoStatisticInfoPlatform {
+class ZoomVideoSdkVideoStatisticInfo extends ZoomVideoSdkVideoStatisticInfoPlatform {
   final String userId;
 
   ZoomVideoSdkVideoStatisticInfo(this.userId);
@@ -47,9 +44,7 @@ class ZoomVideoSdkVideoStatisticInfo
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<num>('getUserVideoBpf', params)
-        .then<num>((num? value) => value ?? 0);
+    return await methodChannel.invokeMethod<num>('getUserVideoBpf', params).then<num>((num? value) => value ?? 0);
   }
 
   /// Get the video's Frames Per Second (FPS).
@@ -59,9 +54,7 @@ class ZoomVideoSdkVideoStatisticInfo
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<num>('getUserVideoFps', params)
-        .then<num>((num? value) => value ?? 0);
+    return await methodChannel.invokeMethod<num>('getUserVideoFps', params).then<num>((num? value) => value ?? 0);
   }
 
   /// Get the video's frame height in pixels.
@@ -71,9 +64,7 @@ class ZoomVideoSdkVideoStatisticInfo
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<num>('getUserVideoHeight', params)
-        .then<num>((num? value) => value ?? 0);
+    return await methodChannel.invokeMethod<num>('getUserVideoHeight', params).then<num>((num? value) => value ?? 0);
   }
 
   /// Get the video's frame height in pixels.
@@ -83,8 +74,6 @@ class ZoomVideoSdkVideoStatisticInfo
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<num>('getUserVideoWidth', params)
-        .then<num>((num? value) => value ?? 0);
+    return await methodChannel.invokeMethod<num>('getUserVideoWidth', params).then<num>((num? value) => value ?? 0);
   }
 }

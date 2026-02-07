@@ -10,11 +10,8 @@ class ZoomVideoSdkLiveTranscriptionLanguage {
   ZoomVideoSdkLiveTranscriptionLanguage(this.languageId, this.languageName);
 
   ZoomVideoSdkLiveTranscriptionLanguage.fromJson(Map<String, dynamic> json)
-      : languageId = json['languageId'],
-        languageName = json['languageName'];
+    : languageId = json['languageId'],
+      languageName = json['languageName'];
 
-  Map<String, dynamic> toJson() => {
-        'languageId': languageId,
-        'languageName': languageName,
-      };
+  Map<String, dynamic> toJson() => {'languageId': languageId, 'languageName': languageName};
 }

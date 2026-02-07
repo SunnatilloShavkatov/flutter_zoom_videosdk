@@ -5,13 +5,11 @@ import 'package:flutter_zoom_videosdk/native/zoom_videosdk_virtual_background_it
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 ///@nodoc
-abstract class ZoomVideoSdkVirtualBackgroundHelperPlatform
-    extends PlatformInterface {
+abstract class ZoomVideoSdkVirtualBackgroundHelperPlatform extends PlatformInterface {
   ZoomVideoSdkVirtualBackgroundHelperPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkVirtualBackgroundHelperPlatform _instance =
-      ZoomVideoSdkVirtualBackgroundHelper();
+  static ZoomVideoSdkVirtualBackgroundHelperPlatform _instance = ZoomVideoSdkVirtualBackgroundHelper();
 
   static ZoomVideoSdkVirtualBackgroundHelperPlatform get instance => _instance;
 
@@ -21,44 +19,35 @@ abstract class ZoomVideoSdkVirtualBackgroundHelperPlatform
   }
 
   Future<bool> isSupportVirtualBackground() async {
-    throw UnimplementedError(
-        'isSupportVirtualBackground() has not been implemented.');
+    throw UnimplementedError('isSupportVirtualBackground() has not been implemented.');
   }
 
-  Future<ZoomVideoSdkVirtualBackgroundItem?> addVirtualBackgroundItem(
-      String filePath) async {
-    throw UnimplementedError(
-        'addVirtualBackgroundItem() has not been implemented.');
+  Future<ZoomVideoSdkVirtualBackgroundItem?> addVirtualBackgroundItem(String filePath) async {
+    throw UnimplementedError('addVirtualBackgroundItem() has not been implemented.');
   }
 
   Future<String> removeVirtualBackgroundItem(String imageName) async {
-    throw UnimplementedError(
-        'removeVirtualBackgroundItem() has not been implemented.');
+    throw UnimplementedError('removeVirtualBackgroundItem() has not been implemented.');
   }
 
-  Future<List<ZoomVideoSdkVirtualBackgroundItem>>
-      getVirtualBackgroundItemList() async {
-    throw UnimplementedError(
-        'getVirtualBackgroundItemList() has not been implemented.');
+  Future<List<ZoomVideoSdkVirtualBackgroundItem>> getVirtualBackgroundItemList() async {
+    throw UnimplementedError('getVirtualBackgroundItemList() has not been implemented.');
   }
 
   Future<String> setVirtualBackgroundItem(String imageName) async {
-    throw UnimplementedError(
-        'setVirtualBackgroundItem() has not been implemented.');
+    throw UnimplementedError('setVirtualBackgroundItem() has not been implemented.');
   }
 }
 
 /// Helper class for virtual background
-class ZoomVideoSdkVirtualBackgroundHelper
-    extends ZoomVideoSdkVirtualBackgroundHelperPlatform {
+class ZoomVideoSdkVirtualBackgroundHelper extends ZoomVideoSdkVirtualBackgroundHelperPlatform {
   final methodChannel = const MethodChannel('flutter_zoom_videosdk');
 
   /// Add virtual background object.
   /// <br />[filePath] the image filePath.
   /// <br />If the function succeeds, the return value is the selected virtual background item.
   @override
-  Future<ZoomVideoSdkVirtualBackgroundItem?> addVirtualBackgroundItem(
-      String filePath) async {
+  Future<ZoomVideoSdkVirtualBackgroundItem?> addVirtualBackgroundItem(String filePath) async {
     var params = <String, dynamic>{};
     params.putIfAbsent("filePath", () => filePath);
 
@@ -96,16 +85,14 @@ class ZoomVideoSdkVirtualBackgroundHelper
   /// Get virtual background item list.
   /// <br />If the function succeeds, the return value is a list of [ZoomVideoSDKVirtualBackgroundItem] object.
   @override
-  Future<List<ZoomVideoSdkVirtualBackgroundItem>>
-      getVirtualBackgroundItemList() async {
+  Future<List<ZoomVideoSdkVirtualBackgroundItem>> getVirtualBackgroundItemList() async {
     var itemListString = await methodChannel
         .invokeMethod<String?>('getVirtualBackgroundItemList')
         .then<String?>((String? value) => value);
 
     var itemListJson = jsonDecode(itemListString!) as List;
     List<ZoomVideoSdkVirtualBackgroundItem> itemList = itemListJson
-        .map((languageJson) =>
-            ZoomVideoSdkVirtualBackgroundItem.fromJson(languageJson))
+        .map((languageJson) => ZoomVideoSdkVirtualBackgroundItem.fromJson(languageJson))
         .toList();
 
     return itemList;

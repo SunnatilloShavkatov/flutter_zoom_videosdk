@@ -6,13 +6,11 @@ import 'package:flutter_zoom_videosdk/native/zoom_videosdk_live_transcription_me
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 ///@nodoc
-abstract class ZoomVideoSdkLiveTranscriptionHelperPlatform
-    extends PlatformInterface {
+abstract class ZoomVideoSdkLiveTranscriptionHelperPlatform extends PlatformInterface {
   ZoomVideoSdkLiveTranscriptionHelperPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkLiveTranscriptionHelperPlatform _instance =
-      ZoomVideoSdkLiveTranscriptionHelper();
+  static ZoomVideoSdkLiveTranscriptionHelperPlatform _instance = ZoomVideoSdkLiveTranscriptionHelper();
   static ZoomVideoSdkLiveTranscriptionHelperPlatform get instance => _instance;
   static set instance(ZoomVideoSdkLiveTranscriptionHelperPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
@@ -20,29 +18,23 @@ abstract class ZoomVideoSdkLiveTranscriptionHelperPlatform
   }
 
   Future<bool> canStartLiveTranscription() async {
-    throw UnimplementedError(
-        'canStartLiveTranscription() has not been implemented.');
+    throw UnimplementedError('canStartLiveTranscription() has not been implemented.');
   }
 
   Future<String> startLiveTranscription() async {
-    throw UnimplementedError(
-        'startLiveTranscription() has not been implemented.');
+    throw UnimplementedError('startLiveTranscription() has not been implemented.');
   }
 
   Future<String> stopLiveTranscription() async {
-    throw UnimplementedError(
-        'stopLiveTranscription() has not been implemented.');
+    throw UnimplementedError('stopLiveTranscription() has not been implemented.');
   }
 
   Future<String> getLiveTranscriptionStatus() async {
-    throw UnimplementedError(
-        'getLiveTranscriptionStatus() has not been implemented.');
+    throw UnimplementedError('getLiveTranscriptionStatus() has not been implemented.');
   }
 
-  Future<List<ZoomVideoSdkLiveTranscriptionLanguage>?>
-      getAvailableSpokenLanguages() async {
-    throw UnimplementedError(
-        'getAvailableSpokenLanguages() has not been implemented.');
+  Future<List<ZoomVideoSdkLiveTranscriptionLanguage>?> getAvailableSpokenLanguages() async {
+    throw UnimplementedError('getAvailableSpokenLanguages() has not been implemented.');
   }
 
   Future<String> setSpokenLanguage(num languageID) async {
@@ -53,49 +45,39 @@ abstract class ZoomVideoSdkLiveTranscriptionHelperPlatform
     throw UnimplementedError('getSpokenLanguage() has not been implemented.');
   }
 
-  Future<List<ZoomVideoSdkLiveTranscriptionLanguage>?>
-      getAvailableTranslationLanguages() async {
-    throw UnimplementedError(
-        'getAvailableTranslationLanguages() has not been implemented.');
+  Future<List<ZoomVideoSdkLiveTranscriptionLanguage>?> getAvailableTranslationLanguages() async {
+    throw UnimplementedError('getAvailableTranslationLanguages() has not been implemented.');
   }
 
   Future<String> setTranslationLanguage(num languageID) async {
-    throw UnimplementedError(
-        'setTranslationLanguage() has not been implemented.');
+    throw UnimplementedError('setTranslationLanguage() has not been implemented.');
   }
 
   Future<ZoomVideoSdkLiveTranscriptionLanguage> getTranslationLanguage() async {
-    throw UnimplementedError(
-        'getTranslationLanguage() has not been implemented.');
+    throw UnimplementedError('getTranslationLanguage() has not been implemented.');
   }
 
   Future<bool> isReceiveSpokenLanguageContentEnabled() async {
-    throw UnimplementedError(
-        'isReceiveSpokenLanguageContentEnabled() has not been implemented.');
+    throw UnimplementedError('isReceiveSpokenLanguageContentEnabled() has not been implemented.');
   }
 
   Future<String> enableReceiveSpokenLanguageContent(bool enable) async {
-    throw UnimplementedError(
-        'enableReceiveSpokenLanguageContent() has not been implemented.');
+    throw UnimplementedError('enableReceiveSpokenLanguageContent() has not been implemented.');
   }
 
   Future<bool> isAllowViewHistoryTranslationMessageEnabled() async {
-    throw UnimplementedError(
-        'isAllowViewHistoryTranslationMessageEnabled() has not been implemented.');
+    throw UnimplementedError('isAllowViewHistoryTranslationMessageEnabled() has not been implemented.');
   }
 
-  Future<List<ZoomVideoSdkLiveTranscriptionMessageInfo>?>
-      getHistoryTranslationMessageList() async {
-    throw UnimplementedError(
-        'getHistoryTranslationMessageList() has not been implemented.');
+  Future<List<ZoomVideoSdkLiveTranscriptionMessageInfo>?> getHistoryTranslationMessageList() async {
+    throw UnimplementedError('getHistoryTranslationMessageList() has not been implemented.');
   }
 }
 
 /// Live transcription interface.
 /// <br />Zoom Video SDK supports live transcription (an additional add-on service) which automatically transcribes the audio and speech from the session
 /// and provides subtitles for the participants. Contact Video SDK Sales for details: https://explore.zoom.us/docs/en-us/video-sdk.html#sf_form
-class ZoomVideoSdkLiveTranscriptionHelper
-    extends ZoomVideoSdkLiveTranscriptionHelperPlatform {
+class ZoomVideoSdkLiveTranscriptionHelper extends ZoomVideoSdkLiveTranscriptionHelperPlatform {
   final methodChannel = const MethodChannel('flutter_zoom_videosdk');
 
   /// Determine whether the user can start live transcription.
@@ -145,16 +127,14 @@ class ZoomVideoSdkLiveTranscriptionHelper
   /// Get a list of all available spoken languages during the session.
   /// <br />Return a list of the available spoken languages during a session. If none are available, the return value is null.
   @override
-  Future<List<ZoomVideoSdkLiveTranscriptionLanguage>?>
-      getAvailableSpokenLanguages() async {
+  Future<List<ZoomVideoSdkLiveTranscriptionLanguage>?> getAvailableSpokenLanguages() async {
     var languageListString = await methodChannel
         .invokeMethod<String?>('getAvailableSpokenLanguages')
         .then<String?>((String? value) => value);
 
     var languageListJson = jsonDecode(languageListString!) as List;
     List<ZoomVideoSdkLiveTranscriptionLanguage> languageList = languageListJson
-        .map((languageJson) =>
-            ZoomVideoSdkLiveTranscriptionLanguage.fromJson(languageJson))
+        .map((languageJson) => ZoomVideoSdkLiveTranscriptionLanguage.fromJson(languageJson))
         .toList();
 
     return languageList;
@@ -185,24 +165,21 @@ class ZoomVideoSdkLiveTranscriptionHelper
         .then<String?>((String? value) => value);
 
     Map<String, dynamic> languageMap = jsonDecode(languageString!);
-    var transcriptionLanguage =
-        ZoomVideoSdkLiveTranscriptionLanguage.fromJson(languageMap);
+    var transcriptionLanguage = ZoomVideoSdkLiveTranscriptionLanguage.fromJson(languageMap);
     return transcriptionLanguage;
   }
 
   /// Get the list of all available translation languages in a session.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
-  Future<List<ZoomVideoSdkLiveTranscriptionLanguage>?>
-      getAvailableTranslationLanguages() async {
+  Future<List<ZoomVideoSdkLiveTranscriptionLanguage>?> getAvailableTranslationLanguages() async {
     var languageListString = await methodChannel
         .invokeMethod<String?>('getAvailableTranslationLanguages')
         .then<String?>((String? value) => value);
 
     var languageListJson = jsonDecode(languageListString!) as List;
     List<ZoomVideoSdkLiveTranscriptionLanguage> languageList = languageListJson
-        .map((languageJson) =>
-            ZoomVideoSdkLiveTranscriptionLanguage.fromJson(languageJson))
+        .map((languageJson) => ZoomVideoSdkLiveTranscriptionLanguage.fromJson(languageJson))
         .toList();
 
     return languageList;
@@ -233,8 +210,7 @@ class ZoomVideoSdkLiveTranscriptionHelper
         .then<String?>((String? value) => value);
 
     Map<String, dynamic> languageMap = jsonDecode(languageString!);
-    var transcriptionLanguage =
-        ZoomVideoSdkLiveTranscriptionLanguage.fromJson(languageMap);
+    var transcriptionLanguage = ZoomVideoSdkLiveTranscriptionLanguage.fromJson(languageMap);
     return transcriptionLanguage;
   }
 
@@ -273,18 +249,15 @@ class ZoomVideoSdkLiveTranscriptionHelper
   /// <br />If the function succeeds, the return value is a list of all history translation messages in a session.
   /// Otherwise it fails, and the return value is NULL.
   @override
-  Future<List<ZoomVideoSdkLiveTranscriptionMessageInfo>?>
-      getHistoryTranslationMessageList() async {
+  Future<List<ZoomVideoSdkLiveTranscriptionMessageInfo>?> getHistoryTranslationMessageList() async {
     var messageInfoListString = await methodChannel
         .invokeMethod<String?>('getHistoryTranslationMessageList')
         .then<String?>((String? value) => value);
 
     var messageInfoListJson = jsonDecode(messageInfoListString!) as List;
-    List<ZoomVideoSdkLiveTranscriptionMessageInfo> messageInfoList =
-        messageInfoListJson
-            .map((messageJson) =>
-                ZoomVideoSdkLiveTranscriptionMessageInfo.fromJson(messageJson))
-            .toList();
+    List<ZoomVideoSdkLiveTranscriptionMessageInfo> messageInfoList = messageInfoListJson
+        .map((messageJson) => ZoomVideoSdkLiveTranscriptionMessageInfo.fromJson(messageJson))
+        .toList();
 
     return messageInfoList;
   }

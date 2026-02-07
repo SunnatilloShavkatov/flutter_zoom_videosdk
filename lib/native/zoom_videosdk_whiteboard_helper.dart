@@ -6,37 +6,31 @@ abstract class ZoomVideoSdkWhiteboardHelperPlatform extends PlatformInterface {
   ZoomVideoSdkWhiteboardHelperPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkWhiteboardHelperPlatform _instance =
-      ZoomVideoSdkWhiteboardHelper();
+  static ZoomVideoSdkWhiteboardHelperPlatform _instance = ZoomVideoSdkWhiteboardHelper();
   static ZoomVideoSdkWhiteboardHelperPlatform get instance => _instance;
   static set instance(ZoomVideoSdkWhiteboardHelperPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
 
-  Future<String> subscribeWhiteboard(
-      num x, num y, num width, num height) async {
+  Future<String> subscribeWhiteboard(num x, num y, num width, num height) async {
     throw UnimplementedError('subscribeWhiteboard() has not been implemented.');
   }
 
   Future<String> unSubscribeWhiteboard() async {
-    throw UnimplementedError(
-        'unSubscribeWhiteboard() has not been implemented.');
+    throw UnimplementedError('unSubscribeWhiteboard() has not been implemented.');
   }
 
   Future<bool> canStartShareWhiteboard() async {
-    throw UnimplementedError(
-        'canStartShareWhiteboard() has not been implemented.');
+    throw UnimplementedError('canStartShareWhiteboard() has not been implemented.');
   }
 
   Future<String> startShareWhiteboard() async {
-    throw UnimplementedError(
-        'startShareWhiteboard() has not been implemented.');
+    throw UnimplementedError('startShareWhiteboard() has not been implemented.');
   }
 
   Future<bool> canStopShareWhiteboard() async {
-    throw UnimplementedError(
-        'canStopShareWhiteboard() has not been implemented.');
+    throw UnimplementedError('canStopShareWhiteboard() has not been implemented.');
   }
 
   Future<String> stopShareWhiteboard() async {
@@ -44,8 +38,7 @@ abstract class ZoomVideoSdkWhiteboardHelperPlatform extends PlatformInterface {
   }
 
   Future<bool> isOtherSharingWhiteboard() async {
-    throw UnimplementedError(
-        'isOtherSharingWhiteboard() has not been implemented.');
+    throw UnimplementedError('isOtherSharingWhiteboard() has not been implemented.');
   }
 
   Future<String> exportWhiteboard(String exportType) async {
@@ -54,8 +47,7 @@ abstract class ZoomVideoSdkWhiteboardHelperPlatform extends PlatformInterface {
 }
 
 /// Helper class for whiteboard
-class ZoomVideoSdkWhiteboardHelper
-    extends ZoomVideoSdkWhiteboardHelperPlatform {
+class ZoomVideoSdkWhiteboardHelper extends ZoomVideoSdkWhiteboardHelperPlatform {
   final methodChannel = const MethodChannel('flutter_zoom_videosdk');
 
   /// Subscribe to the whiteboard.
@@ -65,8 +57,7 @@ class ZoomVideoSdkWhiteboardHelper
   /// <br />[height] the height of the whiteboard.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
-  Future<String> subscribeWhiteboard(
-      num x, num y, num width, num height) async {
+  Future<String> subscribeWhiteboard(num x, num y, num width, num height) async {
     var params = <String, dynamic>{};
     params.putIfAbsent("x", () => x);
     params.putIfAbsent("y", () => y);
@@ -109,18 +100,14 @@ class ZoomVideoSdkWhiteboardHelper
   /// <br />Return true means the user can stop sharing the whiteboard.
   @override
   Future<bool> canStopShareWhiteboard() async {
-    return await methodChannel
-        .invokeMethod<bool>('canStopShareWhiteboard')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('canStopShareWhiteboard').then<bool>((bool? value) => value ?? false);
   }
 
   /// Stop sharing the whiteboard.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> stopShareWhiteboard() async {
-    return await methodChannel
-        .invokeMethod<String>('stopShareWhiteboard')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('stopShareWhiteboard').then<String>((String? value) => value ?? "");
   }
 
   /// Determine whether another user is sharing the whiteboard.

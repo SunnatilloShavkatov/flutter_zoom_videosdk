@@ -9,8 +9,7 @@ abstract class ZoomVideoSdkSubSessionHelperPlatform extends PlatformInterface {
   ZoomVideoSdkSubSessionHelperPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkSubSessionHelperPlatform _instance =
-      ZoomVideoSdkSubSessionHelper();
+  static ZoomVideoSdkSubSessionHelperPlatform _instance = ZoomVideoSdkSubSessionHelper();
   static ZoomVideoSdkSubSessionHelperPlatform get instance => _instance;
   static set instance(ZoomVideoSdkSubSessionHelperPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
@@ -50,39 +49,32 @@ abstract class ZoomVideoSdkSubSessionHelperPlatform extends PlatformInterface {
   }
 
   Future<String> getRequestSubSessionName() async {
-    throw UnimplementedError(
-        'getRequestSubSessionName() has not been implemented.');
+    throw UnimplementedError('getRequestSubSessionName() has not been implemented.');
   }
 
   Future<String> ignoreUserHelpRequest() async {
-    throw UnimplementedError(
-        'ignoreUserHelpRequest() has not been implemented.');
+    throw UnimplementedError('ignoreUserHelpRequest() has not been implemented.');
   }
 
   Future<String> joinSubSessionByUserRequest() async {
-    throw UnimplementedError(
-        'joinSubSessionByUserRequest() has not been implemented.');
+    throw UnimplementedError('joinSubSessionByUserRequest() has not been implemented.');
   }
 
   Future<String> commitSubSessionList(List<String> subSessionNames) async {
-    throw UnimplementedError(
-        'commitSubSessionList() has not been implemented.');
+    throw UnimplementedError('commitSubSessionList() has not been implemented.');
   }
 
   Future<List<ZoomVideoSdkSubSessionKit>> getCommittedSubSessionList() async {
-    throw UnimplementedError(
-        'getCommittedSubSessionList() has not been implemented.');
+    throw UnimplementedError('getCommittedSubSessionList() has not been implemented.');
   }
 
   Future<String> withdrawSubSessionList() async {
-    throw UnimplementedError(
-        'withdrawSubSessionList() has not been implemented.');
+    throw UnimplementedError('withdrawSubSessionList() has not been implemented.');
   }
 }
 
 /// Helper class for managing sub-sessions (breakout rooms) in the session.
-class ZoomVideoSdkSubSessionHelper
-    extends ZoomVideoSdkSubSessionHelperPlatform {
+class ZoomVideoSdkSubSessionHelper extends ZoomVideoSdkSubSessionHelperPlatform {
   final methodChannel = const MethodChannel('flutter_zoom_videosdk');
 
   /// Join a specific sub-session.
@@ -103,18 +95,14 @@ class ZoomVideoSdkSubSessionHelper
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> startSubSession() async {
-    return await methodChannel
-        .invokeMethod<String>('startSubSession')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('startSubSession').then<String>((String? value) => value ?? "");
   }
 
   /// Check if the sub-session has been started.
   /// <br />Return true if the sub-session is started, otherwise false.
   @override
   Future<bool> isSubSessionStarted() async {
-    return await methodChannel
-        .invokeMethod<bool>('isSubSessionStarted')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isSubSessionStarted').then<bool>((bool? value) => value ?? false);
   }
 
   /// Stop the sub-session.
@@ -122,9 +110,7 @@ class ZoomVideoSdkSubSessionHelper
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> stopSubSession() async {
-    return await methodChannel
-        .invokeMethod<String>('stopSubSession')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('stopSubSession').then<String>((String? value) => value ?? "");
   }
 
   /// Broadcast a message to all sub-sessions.
@@ -145,27 +131,21 @@ class ZoomVideoSdkSubSessionHelper
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> returnToMainSession() async {
-    return await methodChannel
-        .invokeMethod<String>('returnToMainSession')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('returnToMainSession').then<String>((String? value) => value ?? "");
   }
 
   /// Request help from the host/manager when in a sub-session.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> requestForHelp() async {
-    return await methodChannel
-        .invokeMethod<String>('requestForHelp')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('requestForHelp').then<String>((String? value) => value ?? "");
   }
 
   /// Get the name of the user requesting help.
   /// <br />Return the user name as a string.
   @override
   Future<String> getRequestUserName() async {
-    return await methodChannel
-        .invokeMethod<String>('getRequestUserName')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('getRequestUserName').then<String>((String? value) => value ?? "");
   }
 
   /// Get the name of the sub-session where help is requested.
@@ -218,8 +198,7 @@ class ZoomVideoSdkSubSessionHelper
 
     var subSessionListJson = jsonDecode(subSessionListString!) as List;
     List<ZoomVideoSdkSubSessionKit> subSessionList = subSessionListJson
-        .map((subSessionJson) =>
-            ZoomVideoSdkSubSessionKit.fromJson(subSessionJson))
+        .map((subSessionJson) => ZoomVideoSdkSubSessionKit.fromJson(subSessionJson))
         .toList();
 
     return subSessionList;

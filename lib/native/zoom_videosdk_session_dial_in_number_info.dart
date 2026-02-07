@@ -21,23 +21,29 @@ class ZoomVideoSdkSessionDialInNumberInfo {
 
   /// the call type of the current information.
 
-  ZoomVideoSdkSessionDialInNumberInfo(this.countryCode, this.countryID,
-      this.countryName, this.number, this.displayNumber, this.type);
+  ZoomVideoSdkSessionDialInNumberInfo(
+    this.countryCode,
+    this.countryID,
+    this.countryName,
+    this.number,
+    this.displayNumber,
+    this.type,
+  );
 
   ZoomVideoSdkSessionDialInNumberInfo.fromJson(Map<String, dynamic> json)
-      : countryCode = json['countryCode'],
-        countryID = json['countryID'],
-        countryName = json['countryName'],
-        number = json['number'],
-        displayNumber = json['displayNumber'],
-        type = json['type'];
+    : countryCode = json['countryCode'],
+      countryID = json['countryID'],
+      countryName = json['countryName'],
+      number = json['number'],
+      displayNumber = json['displayNumber'],
+      type = json['type'];
 
   Map<String, dynamic> toJson() => {
-        'countryCode': countryCode,
-        'countryID': countryID,
-        'countryName': countryName,
-        'number': number,
-        'displayNumber': displayNumber,
-        'type': type,
-      };
+    'countryCode': countryCode,
+    'countryID': countryID,
+    'countryName': countryName,
+    'number': number,
+    'displayNumber': displayNumber,
+    'type': type,
+  };
 }

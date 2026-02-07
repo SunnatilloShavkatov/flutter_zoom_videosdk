@@ -15,19 +15,18 @@ class ZoomVideoSdkVirtualBackgroundItem {
 
   /// True if allow. Otherwise returns false.
 
-  ZoomVideoSdkVirtualBackgroundItem(
-      this.filePath, this.imageName, this.type, this.canBeDeleted);
+  ZoomVideoSdkVirtualBackgroundItem(this.filePath, this.imageName, this.type, this.canBeDeleted);
 
   ZoomVideoSdkVirtualBackgroundItem.fromJson(Map<String, dynamic> json)
-      : filePath = json['filePath'],
-        imageName = json['imageName'],
-        type = json['type'],
-        canBeDeleted = json['canBeDeleted'];
+    : filePath = json['filePath'],
+      imageName = json['imageName'],
+      type = json['type'],
+      canBeDeleted = json['canBeDeleted'];
 
   Map<String, dynamic> toJson() => {
-        'filePath': filePath,
-        'imageName': imageName,
-        'type': type,
-        'canBeDeleted': canBeDeleted,
-      };
+    'filePath': filePath,
+    'imageName': imageName,
+    'type': type,
+    'canBeDeleted': canBeDeleted,
+  };
 }

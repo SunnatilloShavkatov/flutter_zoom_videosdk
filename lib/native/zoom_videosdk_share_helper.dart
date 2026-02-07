@@ -51,23 +51,19 @@ abstract class ZoomVideoSdkShareHelperPlatform extends PlatformInterface {
   }
 
   Future<bool> isShareDeviceAudioEnabled() async {
-    throw UnimplementedError(
-        'isShareDeviceAudioEnabled() has not been implemented.');
+    throw UnimplementedError('isShareDeviceAudioEnabled() has not been implemented.');
   }
 
   Future<bool> isAnnotationFeatureSupport() async {
-    throw UnimplementedError(
-        'isAnnotationFeatureSupport() has not been implemented.');
+    throw UnimplementedError('isAnnotationFeatureSupport() has not been implemented.');
   }
 
   Future<String?> disableViewerAnnotation(bool disable) async {
-    throw UnimplementedError(
-        'disableViewerAnnotation() has not been implemented.');
+    throw UnimplementedError('disableViewerAnnotation() has not been implemented.');
   }
 
   Future<bool> isViewerAnnotationDisabled() async {
-    throw UnimplementedError(
-        'isViewerAnnotationDisabled() has not been implemented.');
+    throw UnimplementedError('isViewerAnnotationDisabled() has not been implemented.');
   }
 
   Future<String?> pauseShare() async {
@@ -82,28 +78,23 @@ abstract class ZoomVideoSdkShareHelperPlatform extends PlatformInterface {
     throw UnimplementedError('startCameraShare() has not been implemented.');
   }
 
-  Future<String?> setAnnotationVanishingToolTime(
-      num displayTime, num vanishingTime) async {
-    throw UnimplementedError(
-        'setAnnotationVanishingToolTime() has not been implemented.');
+  Future<String?> setAnnotationVanishingToolTime(num displayTime, num vanishingTime) async {
+    throw UnimplementedError('setAnnotationVanishingToolTime() has not been implemented.');
   }
 
   Future<num> getAnnotationVanishingToolDisplayTime() async {
-    throw UnimplementedError(
-        'getAnnotationVanishingToolDisplayTime() has not been implemented.');
+    throw UnimplementedError('getAnnotationVanishingToolDisplayTime() has not been implemented.');
   }
 
   Future<num> getAnnotationVanishingToolVanishingTime() async {
-    throw UnimplementedError(
-        'getAnnotationVanishingToolVanishingTime() has not been implemented.');
+    throw UnimplementedError('getAnnotationVanishingToolVanishingTime() has not been implemented.');
   }
 }
 
 /// Zoom Video SDK Share Control
 class ZoomVideoSdkShareHelper extends ZoomVideoSdkShareHelperPlatform {
   final methodChannel = const MethodChannel('flutter_zoom_videosdk');
-  final activityMethodChannel =
-      const MethodChannel('flutter_zoom_videosdk_activity');
+  final activityMethodChannel = const MethodChannel('flutter_zoom_videosdk_activity');
 
   /// Share a selected screen through Intent.
   @override
@@ -124,9 +115,7 @@ class ZoomVideoSdkShareHelper extends ZoomVideoSdkShareHelperPlatform {
   Future<String> lockShare(bool lock) async {
     var params = <String, dynamic>{};
     params.putIfAbsent('lock', () => lock);
-    return await methodChannel
-        .invokeMethod<String>('lockShare', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('lockShare', params).then<String>((String? value) => value ?? "");
   }
 
   /// Stop view or screen share.
@@ -136,45 +125,35 @@ class ZoomVideoSdkShareHelper extends ZoomVideoSdkShareHelperPlatform {
     if (Platform.isAndroid) {
       await activityMethodChannel.invokeMethod<String?>('stopShareScreen');
     }
-    return await methodChannel
-        .invokeMethod<String?>('stopShare')
-        .then<String?>((String? value) => value);
+    return await methodChannel.invokeMethod<String?>('stopShare').then<String?>((String? value) => value);
   }
 
   /// Determine whether other user is sharing.
   /// <br />Return true indicates another user is sharing, otherwise false.
   @override
   Future<bool> isOtherSharing() async {
-    return await methodChannel
-        .invokeMethod<bool>('isOtherSharing')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isOtherSharing').then<bool>((bool? value) => value ?? false);
   }
 
   /// Determine whether the current user is sharing the screen.
   /// <br />Return true indicates the current user is sharing the screen, otherwise false.
   @override
   Future<bool> isScreenSharingOut() async {
-    return await methodChannel
-        .invokeMethod<bool>('isScreenSharingOut')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isScreenSharingOut').then<bool>((bool? value) => value ?? false);
   }
 
   /// Determine whether sharing the view or screen is locked.
   /// <br />Return true indicates that sharing is locked, otherwise false.
   @override
   Future<bool> isShareLocked() async {
-    return await methodChannel
-        .invokeMethod<bool>('isShareLocked')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isShareLocked').then<bool>((bool? value) => value ?? false);
   }
 
   /// Determine whether the current user is sharing.
   /// <br />Return true indicates the current user is sharing, otherwise false.
   @override
   Future<bool> isSharingOut() async {
-    return await methodChannel
-        .invokeMethod<bool>('isSharingOut')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isSharingOut').then<bool>((bool? value) => value ?? false);
   }
 
   /// Determine whether the audio of the sharing device is enabled.
@@ -211,16 +190,12 @@ class ZoomVideoSdkShareHelper extends ZoomVideoSdkShareHelperPlatform {
 
   @override
   Future<String?> pauseShare() async {
-    return await methodChannel
-        .invokeMethod<String?>('pauseShare')
-        .then<String?>((String? value) => value);
+    return await methodChannel.invokeMethod<String?>('pauseShare').then<String?>((String? value) => value);
   }
 
   @override
   Future<String?> resumeShare() async {
-    return await methodChannel
-        .invokeMethod<String?>('resumeShare')
-        .then<String?>((String? value) => value);
+    return await methodChannel.invokeMethod<String?>('resumeShare').then<String?>((String? value) => value);
   }
 
   @override
@@ -228,14 +203,11 @@ class ZoomVideoSdkShareHelper extends ZoomVideoSdkShareHelperPlatform {
     if (view == null) {
       throw Exception('CameraShareView is null');
     }
-    return await methodChannel
-        .invokeMethod<String?>('startShareCamera')
-        .then<String?>((String? value) => value);
+    return await methodChannel.invokeMethod<String?>('startShareCamera').then<String?>((String? value) => value);
   }
 
   @override
-  Future<String?> setAnnotationVanishingToolTime(
-      num displayTime, num vanishingTime) async {
+  Future<String?> setAnnotationVanishingToolTime(num displayTime, num vanishingTime) async {
     var params = <String, dynamic>{};
     params.putIfAbsent('displayTime', () => displayTime);
     params.putIfAbsent('vanishingTime', () => vanishingTime);

@@ -12,17 +12,12 @@ class ZoomVideoSdkSupportCountryInfo {
 
   /// The country name.
 
-  ZoomVideoSdkSupportCountryInfo(
-      this.countryCode, this.countryID, this.countryName);
+  ZoomVideoSdkSupportCountryInfo(this.countryCode, this.countryID, this.countryName);
 
   ZoomVideoSdkSupportCountryInfo.fromJson(Map<String, dynamic> json)
-      : countryCode = json['countryCode'],
-        countryID = json['countryID'],
-        countryName = json['countryName'];
+    : countryCode = json['countryCode'],
+      countryID = json['countryID'],
+      countryName = json['countryName'];
 
-  Map<String, dynamic> toJson() => {
-        'countryCode': countryCode,
-        'countryID': countryID,
-        'countryName': countryName,
-      };
+  Map<String, dynamic> toJson() => {'countryCode': countryCode, 'countryID': countryID, 'countryName': countryName};
 }

@@ -48,9 +48,7 @@ class ZoomVideoSdkUserHelper extends ZoomVideoSdkUserHelperPlatform {
     params.putIfAbsent("userId", () => userId);
     params.putIfAbsent("name", () => name);
 
-    return await methodChannel
-        .invokeMethod<bool>('changeName', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('changeName', params).then<bool>((bool? value) => value ?? false);
   }
 
   /// Assign a user as the session host.
@@ -61,9 +59,7 @@ class ZoomVideoSdkUserHelper extends ZoomVideoSdkUserHelperPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("makeHost", () => userId);
 
-    return await methodChannel
-        .invokeMethod<bool>('makeHost', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('makeHost', params).then<bool>((bool? value) => value ?? false);
   }
 
   /// Assign a user as the session manager.
@@ -74,9 +70,7 @@ class ZoomVideoSdkUserHelper extends ZoomVideoSdkUserHelperPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<bool>('makeManager', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('makeManager', params).then<bool>((bool? value) => value ?? false);
   }
 
   /// Revoke manager rights from a user.
@@ -87,9 +81,7 @@ class ZoomVideoSdkUserHelper extends ZoomVideoSdkUserHelperPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<bool>('revokeManager', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('revokeManager', params).then<bool>((bool? value) => value ?? false);
   }
 
   /// Remove user from session.
@@ -100,8 +92,6 @@ class ZoomVideoSdkUserHelper extends ZoomVideoSdkUserHelperPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<bool>('removeUser', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('removeUser', params).then<bool>((bool? value) => value ?? false);
   }
 }

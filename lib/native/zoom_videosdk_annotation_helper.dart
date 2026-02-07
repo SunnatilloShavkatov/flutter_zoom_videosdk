@@ -6,17 +6,17 @@ abstract class ZoomVideoSdkAnnotationHelperPlatform extends PlatformInterface {
   ZoomVideoSdkAnnotationHelperPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkAnnotationHelperPlatform _instance =
-      ZoomVideoSdkAnnotationHelper();
+  static ZoomVideoSdkAnnotationHelperPlatform _instance = ZoomVideoSdkAnnotationHelper();
+
   static ZoomVideoSdkAnnotationHelperPlatform get instance => _instance;
+
   static set instance(ZoomVideoSdkAnnotationHelperPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
 
   Future<bool> isSenderDisableAnnotation() async {
-    throw UnimplementedError(
-        'isSenderDisableAnnotation() has not been implemented.');
+    throw UnimplementedError('isSenderDisableAnnotation() has not been implemented.');
   }
 
   Future<String> startAnnotation() async {
@@ -69,8 +69,7 @@ abstract class ZoomVideoSdkAnnotationHelperPlatform extends PlatformInterface {
 }
 
 /// Annotation interface
-class ZoomVideoSdkAnnotationHelper
-    extends ZoomVideoSdkAnnotationHelperPlatform {
+class ZoomVideoSdkAnnotationHelper extends ZoomVideoSdkAnnotationHelperPlatform {
   final methodChannel = const MethodChannel('flutter_zoom_videosdk');
 
   /// Whether the annotation was disabled or not by the share owner.
@@ -87,18 +86,14 @@ class ZoomVideoSdkAnnotationHelper
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> startAnnotation() async {
-    return await methodChannel
-        .invokeMethod<String>('startAnnotation')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('startAnnotation').then<String>((String? value) => value ?? "");
   }
 
   /// Stops annotation.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> stopAnnotation() async {
-    return await methodChannel
-        .invokeMethod<String>('stopAnnotation')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('stopAnnotation').then<String>((String? value) => value ?? "");
   }
 
   /// Sets the annotation tool color with parameter [toolColor].
@@ -117,9 +112,7 @@ class ZoomVideoSdkAnnotationHelper
   /// <br />Return the hex string of the tool color.
   @override
   Future<String> getToolColor() async {
-    return await methodChannel
-        .invokeMethod<String>('getToolColor')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('getToolColor').then<String>((String? value) => value ?? "");
   }
 
   /// Sets the annotation tool type with parameter [toolType].
@@ -139,18 +132,14 @@ class ZoomVideoSdkAnnotationHelper
     var params = <String, dynamic>{};
     params.putIfAbsent("toolType", () => toolType);
 
-    return await methodChannel
-        .invokeMethod<String>('setToolType', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('setToolType', params).then<String>((String? value) => value ?? "");
   }
 
   /// Gets the annotation tool type.
   /// <br />Return the current tool type.
   @override
   Future<String> getToolType() async {
-    return await methodChannel
-        .invokeMethod<String>('getToolType')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('getToolType').then<String>((String? value) => value ?? "");
   }
 
   /// Sets the annotation tool width with parameter [width].
@@ -169,27 +158,21 @@ class ZoomVideoSdkAnnotationHelper
   /// <br />Return the current tool width.
   @override
   Future<num> getToolWidth() async {
-    return await methodChannel
-        .invokeMethod<num>('getToolWidth')
-        .then<num>((num? value) => value ?? 0);
+    return await methodChannel.invokeMethod<num>('getToolWidth').then<num>((num? value) => value ?? 0);
   }
 
   /// Undoes one annotation content step.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> undo() async {
-    return await methodChannel
-        .invokeMethod<String>('undo')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('undo').then<String>((String? value) => value ?? "");
   }
 
   /// Redoes one annotation content step.
   /// <br />Return [ZoomVideoSDKError_Success] if the function succeeds. Otherwise, this function returns an error.
   @override
   Future<String> redo() async {
-    return await methodChannel
-        .invokeMethod<String>('redo')
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('redo').then<String>((String? value) => value ?? "");
   }
 
   /// Clears the annotation content with parameter [clearType].
@@ -200,17 +183,13 @@ class ZoomVideoSdkAnnotationHelper
     var params = <String, dynamic>{};
     params.putIfAbsent("clearType", () => clearType);
 
-    return await methodChannel
-        .invokeMethod<String>('clear', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('clear', params).then<String>((String? value) => value ?? "");
   }
 
   /// Whether the current user can do annotation on the share.
   /// <br />Return true means the user can do annotation, otherwise false.
   @override
   Future<bool> canDoAnnotation() async {
-    return await methodChannel
-        .invokeMethod<bool>('canDoAnnotation')
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('canDoAnnotation').then<bool>((bool? value) => value ?? false);
   }
 }

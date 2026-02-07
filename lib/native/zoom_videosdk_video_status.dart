@@ -8,8 +8,7 @@ abstract class ZoomVideoSdkVideoStatusPlatform extends PlatformInterface {
   ZoomVideoSdkVideoStatusPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkVideoStatusPlatform _instance =
-      ZoomVideoSdkVideoStatus("0");
+  static ZoomVideoSdkVideoStatusPlatform _instance = ZoomVideoSdkVideoStatus("0");
   static ZoomVideoSdkVideoStatusPlatform get instance => _instance;
   static set instance(ZoomVideoSdkVideoStatusPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
@@ -40,9 +39,7 @@ class ZoomVideoSdkVideoStatus extends ZoomVideoSdkVideoStatusPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<bool>('isOn', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isOn', params).then<bool>((bool? value) => value ?? false);
   }
 
   /// Query if the user's device has a compatible camera.
@@ -55,8 +52,6 @@ class ZoomVideoSdkVideoStatus extends ZoomVideoSdkVideoStatusPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<bool>('hasVideoDevice', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('hasVideoDevice', params).then<bool>((bool? value) => value ?? false);
   }
 }

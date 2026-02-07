@@ -6,8 +6,7 @@ abstract class ZoomVideoSdkAudioStatusPlatform extends PlatformInterface {
   ZoomVideoSdkAudioStatusPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkAudioStatusPlatform _instance =
-      ZoomVideoSdkAudioStatus("0");
+  static ZoomVideoSdkAudioStatusPlatform _instance = ZoomVideoSdkAudioStatus("0");
   static ZoomVideoSdkAudioStatusPlatform get instance => _instance;
   static set instance(ZoomVideoSdkAudioStatusPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
@@ -42,9 +41,7 @@ class ZoomVideoSdkAudioStatus extends ZoomVideoSdkAudioStatusPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<bool>('isMuted', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isMuted', params).then<bool>((bool? value) => value ?? false);
   }
 
   /// Determine whether the user is talking.
@@ -54,9 +51,7 @@ class ZoomVideoSdkAudioStatus extends ZoomVideoSdkAudioStatusPlatform {
     var params = <String, dynamic>{};
     params.putIfAbsent("userId", () => userId);
 
-    return await methodChannel
-        .invokeMethod<bool>('isTalking', params)
-        .then<bool>((bool? value) => value ?? false);
+    return await methodChannel.invokeMethod<bool>('isTalking', params).then<bool>((bool? value) => value ?? false);
   }
 
   /// Get audio type: VOIP (Voice over IP), Telephony, or None.

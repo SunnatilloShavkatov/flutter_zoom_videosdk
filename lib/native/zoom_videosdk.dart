@@ -40,6 +40,8 @@ class SubscribeFailReason {
 }
 
 class UVCCameraStatus {
+  const UVCCameraStatus();
+
   static const Attached = 'ZoomVideoSDKUVCCameraStatus_Attached';
   static const Detached = 'ZoomVideoSDKUVCCameraStatus_Detached';
   static const Connected = 'ZoomVideoSDKUVCCameraStatus_Connected';
@@ -48,6 +50,8 @@ class UVCCameraStatus {
 
 /// You can get share status in the user object [ZoomVideoSDKUser]
 class ShareStatus {
+  const ShareStatus();
+
   static const None = 'ZoomVideoSDKShareStatus_None';
   static const Stop = 'ZoomVideoSDKShareStatus_Stop';
   static const Pause = 'ZoomVideoSDKShareStatus_Pause';
@@ -57,6 +61,8 @@ class ShareStatus {
 
 /// An enumeration of live stream status.
 class LiveStreamStatus {
+  const LiveStreamStatus();
+
   static const None = 'ZoomVideoSDKLiveStreamStatus_None';
   static const InProgress = 'ZoomVideoSDKLiveStreamStatus_InProgress';
   static const Connecting = 'ZoomVideoSDKLiveStreamStatus_Connecting';
@@ -67,6 +73,8 @@ class LiveStreamStatus {
 
 /// An enum representing the status of the recording status.
 class RecordingStatus {
+  const RecordingStatus();
+
   static const None = 'ZoomVideoSDKRecordingStatus_None';
   static const Start = 'ZoomVideoSDKRecordingStatus_Start';
   static const Stop = 'ZoomVideoSDKRecordingStatus_Stop';
@@ -76,6 +84,8 @@ class RecordingStatus {
 
 /// An enumeration of audio type.
 class AudioType {
+  const AudioType();
+
   static const None = 'ZoomVideoSDKAudioType_None';
   static const VOIP = 'ZoomVideoSDKAudioType_VOIP';
   static const Telephony = 'ZoomVideoSDKAudioType_Telephony';
@@ -84,6 +94,8 @@ class AudioType {
 
 /// An enumeration of video aspect.
 class VideoAspect {
+  const VideoAspect();
+
   static const Original = 'ZoomVideoSDKVideoAspect_Original';
   static const FullFilled = 'ZoomVideoSDKVideoAspect_Full_Filled';
   static const LetterBox = 'ZoomVideoSDKVideoAspect_LetterBox';
@@ -92,6 +104,8 @@ class VideoAspect {
 
 /// An enumeration of video resolution.
 class VideoResolution {
+  const VideoResolution();
+
   static const Resolution90 = 'ZoomVideoSDKVideoResolution_90';
   static const Resolution180 = 'ZoomVideoSDKVideoResolution_180';
   static const Resolution360 = 'ZoomVideoSDKVideoResolution_360';
@@ -101,6 +115,8 @@ class VideoResolution {
 
 /// Status of telephone.
 class PhoneStatus {
+  const PhoneStatus();
+
   static const None = 'ZoomVideoSDKPhoneStatus_None';
   static const Calling = 'ZoomVideoSDKPhoneStatus_Calling';
   static const Ringing = 'ZoomVideoSDKPhoneStatus_Ringing';
@@ -115,6 +131,8 @@ class PhoneStatus {
 
 /// The reason for the failure of the telephone call.
 class PhoneFailedReason {
+  const PhoneFailedReason();
+
   static const None = 'ZoomVideoSDKPhoneFailedReason_None';
 
   /// For initialization.
@@ -146,6 +164,8 @@ class PhoneFailedReason {
 
 /// The chat message delete type are sent in the onChatMsgDeleteNotification:messageID:deleteBy: callback.
 class ChatMessageDeleteType {
+  const ChatMessageDeleteType();
+
   static const None = 'ZoomVideoSDKChatMsgDeleteBy_NONE';
   static const Self = 'ZoomVideoSDKChatMsgDeleteBy_SELF';
   static const Host = 'ZoomVideoSDKChatMsgDeleteBy_HOST';
@@ -153,22 +173,30 @@ class ChatMessageDeleteType {
 }
 
 class MultiCameraStreamStatus {
+  const MultiCameraStreamStatus();
+
   static const Joined = 'ZoomVideoSDKMultiCameraStreamStatus_Joined';
   static const Left = 'ZoomVideoSDKMultiCameraStreamStatus_Left';
 }
 
 /// The live transcription statuses are sent in the ZoomVideoSDKDelegate#onLiveTranscriptionStatus callback.
 class LiveTranscriptionStatus {
+  const LiveTranscriptionStatus();
+
   static const Stop = 'ZoomVideoSDKLiveTranscription_Status_Stop';
   static const Start = 'ZoomVideoSDKLiveTranscription_Status_Start';
 }
 
 class SystemPermissionType {
+  const SystemPermissionType();
+
   static const Camera = 'ZoomVideoSDKSystemPermissionType_Camera';
   static const Microphone = 'ZoomVideoSDKSystemPermissionType_Microphone';
 }
 
 class LiveTranscriptionOperationType {
+  const LiveTranscriptionOperationType();
+
   static const None = 'ZoomVideoSDKLiveTranscription_OperationType_None';
   static const Update = 'ZoomVideoSDKLiveTranscription_OperationType_Update';
   static const Delete = 'ZoomVideoSDKLiveTranscription_OperationType_Delete';
@@ -178,6 +206,8 @@ class LiveTranscriptionOperationType {
 }
 
 class DialInNumberType {
+  const DialInNumberType();
+
   static const None = 'ZoomVideoSDKDialInNumType_None';
   static const Toll = 'ZoomVideoSDKDialInNumType_Toll';
   static const TollFree = 'ZoomVideoSDKDialInNumType_TollFree';
@@ -185,15 +215,17 @@ class DialInNumberType {
 
 /// Cloud recording consent type.
 class ConsentType {
+  const ConsentType();
+
   static const ConsentType_Invalid = 'ConsentType_Invalid';
-  static const ConsentType_Traditional =
-      'ConsentType_Traditional'; //In this case, 'accept' means agree to be recorded to gallery and speaker mode, 'decline' means leave session.
-  static const ConsentType_Individual =
-      'ConsentType_Individual'; //In this case, 'accept' means agree to be recorded to a separate file, 'decline' means stay in session and can't be recorded.
+  static const ConsentType_Traditional = 'ConsentType_Traditional';
+  static const ConsentType_Individual = 'ConsentType_Individual';
 }
 
 /// Type of video network status.
 class NetworkStatus {
+  const NetworkStatus();
+
   static const None = 'ZoomVideoSDKNetwork_None';
   static const Good = 'ZoomVideoSDKNetwork_Good';
   static const Normal = 'ZoomVideoSDKNetwork_Normal';
@@ -430,21 +462,21 @@ class Errors {
 }
 
 class InitConfig {
-  String? domain;
-  bool? enableLog;
-  String? logFilePrefix;
-  String? appGroupId;
-  String? screeShareBundleId;
-  bool? enableFullHD; // Availble for certain Android hardware only.
-  bool? enableCallKit;
-  RawDataMemoryMode? videoRawDataMemoryMode;
-  RawDataMemoryMode? audioRawDataMemoryMode;
-  RawDataMemoryMode? shareRawDataMemoryMode;
-  String? speakerFilePath;
-  String? preferVideoResolution;
+  final String? domain;
+  final bool? enableLog;
+  final String? logFilePrefix;
+  final String? appGroupId;
+  final String? screeShareBundleId;
+  final bool? enableFullHD; // Availble for certain Android hardware only.
+  final bool? enableCallKit;
+  final RawDataMemoryMode? videoRawDataMemoryMode;
+  final RawDataMemoryMode? audioRawDataMemoryMode;
+  final RawDataMemoryMode? shareRawDataMemoryMode;
+  final String? speakerFilePath;
+  final String? preferVideoResolution;
 
   //Constructor
-  InitConfig({
+  const InitConfig({
     required this.domain,
     required this.enableLog,
     this.logFilePrefix,
@@ -461,16 +493,16 @@ class InitConfig {
 }
 
 class JoinSessionConfig {
-  String? sessionName;
-  String? sessionPassword;
-  String? token;
-  String? userName;
-  Map<String, bool>? audioOptions;
-  Map<String, bool>? videoOptions;
-  num? sessionIdleTimeoutMins;
+  final String? sessionName;
+  final String? sessionPassword;
+  final String? token;
+  final String? userName;
+  final Map<String, bool>? audioOptions;
+  final Map<String, bool>? videoOptions;
+  final num? sessionIdleTimeoutMins;
 
   //Constructor
-  JoinSessionConfig({
+  const JoinSessionConfig({
     required this.sessionName,
     this.sessionPassword,
     required this.token,

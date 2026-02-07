@@ -2,28 +2,23 @@ import 'package:flutter/services.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 ///@nodoc
-abstract class ZoomVideoSdkRemoteCameraControlHelperPlatform
-    extends PlatformInterface {
+abstract class ZoomVideoSdkRemoteCameraControlHelperPlatform extends PlatformInterface {
   ZoomVideoSdkRemoteCameraControlHelperPlatform() : super(token: _token);
 
   static final Object _token = Object();
-  static ZoomVideoSdkRemoteCameraControlHelperPlatform _instance =
-      ZoomVideoSdkRemoteCameraControlHelper();
-  static ZoomVideoSdkRemoteCameraControlHelperPlatform get instance =>
-      _instance;
+  static ZoomVideoSdkRemoteCameraControlHelperPlatform _instance = ZoomVideoSdkRemoteCameraControlHelper();
+  static ZoomVideoSdkRemoteCameraControlHelperPlatform get instance => _instance;
   static set instance(ZoomVideoSdkRemoteCameraControlHelperPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
 
   Future<String> giveUpControlRemoteCamera(String userId) async {
-    throw UnimplementedError(
-        'giveUpControlRemoteCamera() has not been implemented.');
+    throw UnimplementedError('giveUpControlRemoteCamera() has not been implemented.');
   }
 
   Future<String> requestControlRemoteCamera(String userId) async {
-    throw UnimplementedError(
-        'requestControlRemoteCamera() has not been implemented.');
+    throw UnimplementedError('requestControlRemoteCamera() has not been implemented.');
   }
 
   Future<String> turnLeft(String userId, num range) async {
@@ -52,8 +47,7 @@ abstract class ZoomVideoSdkRemoteCameraControlHelperPlatform
 }
 
 /// Interface to control far-end camera (Only for Android)
-class ZoomVideoSdkRemoteCameraControlHelper
-    extends ZoomVideoSdkRemoteCameraControlHelperPlatform {
+class ZoomVideoSdkRemoteCameraControlHelper extends ZoomVideoSdkRemoteCameraControlHelperPlatform {
   final methodChannel = const MethodChannel('flutter_zoom_videosdk');
 
   /// Give up control of the remote camera from the user with [userId].
@@ -89,9 +83,7 @@ class ZoomVideoSdkRemoteCameraControlHelper
     params.putIfAbsent("userId", () => userId);
     params.putIfAbsent("range", () => range);
 
-    return await methodChannel
-        .invokeMethod<String>('turnLeft', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('turnLeft', params).then<String>((String? value) => value ?? "");
   }
 
   /// Turn the camera to the right by [range] from the user with [userId].
@@ -103,9 +95,7 @@ class ZoomVideoSdkRemoteCameraControlHelper
     params.putIfAbsent("userId", () => userId);
     params.putIfAbsent("range", () => range);
 
-    return await methodChannel
-        .invokeMethod<String>('turnRight', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('turnRight', params).then<String>((String? value) => value ?? "");
   }
 
   /// Turn the camera down by [range] from the user with [userId].
@@ -117,9 +107,7 @@ class ZoomVideoSdkRemoteCameraControlHelper
     params.putIfAbsent("userId", () => userId);
     params.putIfAbsent("range", () => range);
 
-    return await methodChannel
-        .invokeMethod<String>('turnDown', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('turnDown', params).then<String>((String? value) => value ?? "");
   }
 
   /// Turn the camera up by [range] from the user with [userId].
@@ -131,9 +119,7 @@ class ZoomVideoSdkRemoteCameraControlHelper
     params.putIfAbsent("userId", () => userId);
     params.putIfAbsent("range", () => range);
 
-    return await methodChannel
-        .invokeMethod<String>('turnUp', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('turnUp', params).then<String>((String? value) => value ?? "");
   }
 
   /// Zoom in the camera by [range] from the user with [userId].
@@ -145,9 +131,7 @@ class ZoomVideoSdkRemoteCameraControlHelper
     params.putIfAbsent("userId", () => userId);
     params.putIfAbsent("range", () => range);
 
-    return await methodChannel
-        .invokeMethod<String>('zoomIn', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('zoomIn', params).then<String>((String? value) => value ?? "");
   }
 
   /// Zoom out the camera by [range] from the user with [userId].
@@ -159,8 +143,6 @@ class ZoomVideoSdkRemoteCameraControlHelper
     params.putIfAbsent("userId", () => userId);
     params.putIfAbsent("range", () => range);
 
-    return await methodChannel
-        .invokeMethod<String>('zoomOut', params)
-        .then<String>((String? value) => value ?? "");
+    return await methodChannel.invokeMethod<String>('zoomOut', params).then<String>((String? value) => value ?? "");
   }
 }

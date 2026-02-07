@@ -106,13 +106,11 @@ class EventType {
 
   /// The event when a live translation message is received.
   /// <br />- [data]: {messageInfo: [ZoomVideoSdkLiveTranscriptionMessageInfo]}
-  static const onLiveTranscriptionMsgInfoReceived =
-      'onLiveTranscriptionMsgInfoReceived';
+  static const onLiveTranscriptionMsgInfoReceived = 'onLiveTranscriptionMsgInfoReceived';
 
   /// The event when someone in a given session enables or disables multi-camera. All participants in the session receive this callback.
   /// <br />- [data]: {status: [MultiCameraStreamStatus], user: [ZoomVideoSdkUser]}
-  static const onMultiCameraStreamStatusChanged =
-      'onMultiCameraStreamStatusChanged';
+  static const onMultiCameraStreamStatusChanged = 'onMultiCameraStreamStatusChanged';
 
   /// The event when the SDK requires system permissions to continue functioning.
   /// <br />- [data]: {permissionType:[SystemPermissionType]}
@@ -120,8 +118,7 @@ class EventType {
 
   /// The event when the SSL is verified.
   /// <br />- [data]: {certIssuedTo: String, certIssuedBy: String, certSerialNum: String, certFingerPrint: String}
-  static const onSSLCertVerifiedFailNotification =
-      'onSSLCertVerifiedFailNotification';
+  static const onSSLCertVerifiedFailNotification = 'onSSLCertVerifiedFailNotification';
 
   /// The event when the proxy setting is changed.
   /// <br />- [data]: {proxyHost: String, proxyPort: int, proxyDescription: String}
@@ -133,8 +130,7 @@ class EventType {
 
   /// The event when the user's video network status changes.
   /// <br />- [data]: {user: [ZoomVideoSdkUser], status: [NetworkStatus]}
-  static const onUserVideoNetworkStatusChanged =
-      'onUserVideoNetworkStatusChanged';
+  static const onUserVideoNetworkStatusChanged = 'onUserVideoNetworkStatusChanged';
 
   /// The event when the current user is granted camera control access. Once the current user sends the camera control request, this callback will be triggered with the result of the request.
   /// <br />- [data]: {user: [ZoomVideoSdkUser], approved: bool}
@@ -205,8 +201,7 @@ class EventType {
 
   /// The event when the user's overall network status changes.
   /// <br />- [data]: {user: [ZoomVideoSdkUser], level: [NetworkStatus]}
-  static const onUserOverallNetworkStatusChanged =
-      'onUserOverallNetworkStatusChanged';
+  static const onUserOverallNetworkStatusChanged = 'onUserOverallNetworkStatusChanged';
 
   /// The event when the audio source type of the current user changes.
   /// <br />- [data]: {device: [ZoomVideoSdkAudioDevice]}
@@ -214,8 +209,7 @@ class EventType {
 
   /// The event when the whiteboard share status of a user changes.
   /// <br />- [data]: {user: [ZoomVideoSdkUser], status: [WhiteboardStatus]}
-  static const onUserWhiteboardShareStatusChanged =
-      'onUserWhiteboardShareStatusChanged';
+  static const onUserWhiteboardShareStatusChanged = 'onUserWhiteboardShareStatusChanged';
 
   /// The event when the whiteboard is exported.
   /// <br />- [data]: {format: [ExportFormat], data: String}
@@ -237,25 +231,21 @@ class EventType {
 
   /// The event when the user receives a broadcast message from main session.
   /// <br />- [data]: {message: String, name: String}
-  static const onBroadcastMessageFromMainSession =
-      'onBroadcastMessageFromMainSession';
+  static const onBroadcastMessageFromMainSession = 'onBroadcastMessageFromMainSession';
 
   /// The event when the user receives a help request from subsession.
-  static const onSubSessionUserHelpRequestHandler =
-      'onSubSessionUserHelpRequestHandler';
+  static const onSubSessionUserHelpRequestHandler = 'onSubSessionUserHelpRequestHandler';
 
   /// The event when the result of help request is received.
   /// <br />- [data]: {result: [UserHelpRequestResult]}
-  static const onSubSessionUserHelpRequestResult =
-      'onSubSessionUserHelpRequestResult';
+  static const onSubSessionUserHelpRequestResult = 'onSubSessionUserHelpRequestResult';
 }
 
 /// @nodoc
 class EventEmitter {
   final Map<String, List<StreamController>> _eventControllers = {};
 
-  StreamSubscription addListener(
-      String event, void Function(dynamic data) handler) {
+  StreamSubscription addListener(String event, void Function(dynamic data) handler) {
     if (!_eventControllers.containsKey(event)) {
       _eventControllers[event] = [];
     }
@@ -297,8 +287,7 @@ class ZoomVideoSdkEventListener {
 
   /// Add a listener to the event.
   /// <br />- [event]: [EventType] The event to listen to.
-  StreamSubscription addListener(
-      String event, void Function(dynamic data) handler) {
+  StreamSubscription addListener(String event, void Function(dynamic data) handler) {
     return eventEmitter.addListener(event, handler);
   }
 }
