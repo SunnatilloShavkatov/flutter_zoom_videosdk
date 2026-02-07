@@ -1,0 +1,32 @@
+name: flutter_zoom_videosdk
+description: "A Flutter plugin for Zoom Video SDK."
+version: 2.4.0
+homepage: https://developers.zoom.us/docs/video-sdk/flutter/
+
+environment:
+  sdk: ">=3.10.0 <4.0.0"
+  flutter: ">=3.38.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_hooks: ^0.21.3+1
+  plugin_platform_interface: ^2.1.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+
+  plugin:
+    platforms:
+      android:
+        package: com.flutterzoom.videosdk
+        pluginClass: FlutterZoomVideoSdkPlugin
+      ios:
+        pluginClass: FlutterZoomVideoSdkPlugin
+    assets:
+      - assets/images/
+      - assets/icons/
