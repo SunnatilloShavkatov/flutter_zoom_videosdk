@@ -14,7 +14,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.13.0")
+        classpath("com.android.tools.build:gradle:8.13.2")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
@@ -61,9 +61,6 @@ android {
 }
 
 dependencies {
-    implementation("com.google.code.gson:gson:2.10.1")
-    implementation("androidx.security:security-crypto:1.1.0-alpha06")
-    implementation("com.google.crypto.tink:tink-android:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("us.zoom.videosdk:zoomvideosdk-core:2.4.0")
+    implementation("com.google.code.gson:gson:2.13.2")
+    implementation("us.zoom.videosdk:zoomvideosdk-core:2.4.12")
 }
