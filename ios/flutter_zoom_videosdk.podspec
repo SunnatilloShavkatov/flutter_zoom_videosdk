@@ -22,21 +22,7 @@ A new Flutter plugin project.
   s.platform = :ios, '15.0'
 
   # Flutter.framework does not contain a i386 slice.
-  # ZoomVideoSDK does NOT support Mac Catalyst; disable it at pod target level.
-  s.pod_target_xcconfig = {
-    'DEFINES_MODULE' => 'YES',
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386 arm64',
-    # Explicitly exclude macOS/Catalyst builds for this pod.
-    'EXCLUDED_ARCHS[sdk=macosx*]' => 'arm64 x86_64',
-    'SUPPORTS_MACCATALYST' => 'NO'
-  }
-
-  # Ensure the app target doesn't try to build this pod for Mac Catalyst.
-  s.user_target_xcconfig = {
-    # Ensure the app target never links this pod for Catalyst/macOS.
-    'EXCLUDED_ARCHS[sdk=macosx*]' => 'arm64 x86_64',
-    'SUPPORTS_MACCATALYST' => 'NO'
-  }
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386 arm64' }
 
   s.preserve_paths = 'ZoomVideoSDK.xcframework/**/*'
   s.exclude_files = [
