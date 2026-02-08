@@ -17,6 +17,8 @@ A new Flutter plugin project.
   s.public_header_files = 'Classes/*.h'
   s.dependency 'Flutter'
   s.dependency 'ZoomVideoSDK/ZoomVideoSDK', '2.4.12'
+  s.dependency 'ZoomVideoSDK/ZoomTask', '2.4.12'
+  s.dependency 'ZoomVideoSDK/zoomcml', '2.4.12'
   s.platform = :ios, '15.0'
 
   # Flutter.framework does not contain a i386 slice.
