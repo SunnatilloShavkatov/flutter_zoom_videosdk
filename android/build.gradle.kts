@@ -27,7 +27,7 @@ allprojects {
 }
 
 android {
-    namespace = "uz.englify.platform_methods"
+    namespace = "com.flutterzoom.videosdk"
     compileSdk = 36
 
     compileOptions {
