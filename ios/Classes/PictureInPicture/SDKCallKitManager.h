@@ -17,6 +17,7 @@
 @property (nonatomic, assign, readonly) BOOL isInCall;
 
 + (instancetype)sharedManager;
++ (BOOL)isCallKitAvailable;
 - (void)startCallWithHandle:(NSString *)handle complete:(void (^)(void))completion;
 - (void)endCallWithComplete:(void (^)(void))completion;
 - (void)setEnableCallKit: (BOOL)enable;
