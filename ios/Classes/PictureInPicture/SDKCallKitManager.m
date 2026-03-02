@@ -30,10 +30,21 @@ bool enableCallKit = true;
     return sharedInstance;
 }
 
++ (BOOL)isChinaRegion {
+    NSString *regionCode = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
+    return regionCode != nil && [regionCode isEqualToString:@"CN"];
+}
+
++ (BOOL)isCallKitAvailable {
+    if (!enableCallKit) return NO;
+    if ([SDKCallKitManager isChinaRegion]) return NO;
+    return YES;
+}
+
 - (instancetype)init {
     self = [super init];
     if (self) {
-        if (enableCallKit) {
+        if ([SDKCallKitManager isCallKitAvailable]) {
             if (@available(iOS 10.0, *)) {
                 CXProviderConfiguration *providerConfig = [[CXProviderConfiguration alloc] initWithLocalizedName:@"VideoSDK"];
                 self.provider = [[CXProvider alloc] initWithConfiguration:providerConfig];
@@ -51,7 +62,7 @@ bool enableCallKit = true;
 }
 
 - (void)startCallWithHandle:(NSString *)handle complete:(void (^)(void))completion {
-    if (enableCallKit) {
+    if ([SDKCallKitManager isCallKitAvailable]) {
         if (self.isInCall) {
             NSLog(@"Already in a call process.");
             return;
@@ -86,7 +97,7 @@ bool enableCallKit = true;
 }
 
 - (void)endCallWithComplete:(void (^)(void))completion {
-    if (enableCallKit) {
+    if ([SDKCallKitManager isCallKitAvailable]) {
         if (!self.isInCall) {
             NSLog(@"No active call process.");
             return;
