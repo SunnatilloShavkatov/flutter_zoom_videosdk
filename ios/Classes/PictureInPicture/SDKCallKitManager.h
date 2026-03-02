@@ -6,19 +6,23 @@
 //  Copyright © 2023 Zoom Video Communications, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <CallKit/CallKit.h>
+#import <Foundation/Foundation.h>
 #import <ZoomVideoSDK/ZoomVideoSDK.h>
 
+// Apple MIIT requirement: CallKit must be disabled in China App Store.
+// Set to 1 to enable CallKit (disabled automatically for Chinese locales).
 #define ENABLE_CALLKIT_VOIP_MEETING 1
 
 @interface SDKCallKitManager : NSObject <CXProviderDelegate>
 
-@property (nonatomic, assign, readonly) BOOL isInCall;
+@property(nonatomic, assign, readonly) BOOL isInCall;
 
 + (instancetype)sharedManager;
-- (void)startCallWithHandle:(NSString *)handle complete:(void (^)(void))completion;
++ (BOOL)isChineseRegion;
+- (void)startCallWithHandle:(NSString *)handle
+                   complete:(void (^)(void))completion;
 - (void)endCallWithComplete:(void (^)(void))completion;
-- (void)setEnableCallKit: (BOOL)enable;
+- (void)setEnableCallKit:(BOOL)enable;
 
 @end
