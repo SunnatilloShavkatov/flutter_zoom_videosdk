@@ -42,4 +42,29 @@ post_install do |installer|
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'i386'
     end
   end
+
+  # Fix: rive_native uses pod_target_xcconfig (not user_target_xcconfig), so its
+  # Rive C++ linker flags are not propagated to the host app's final link step.
+  # We manually add them to the Pods-Runner xcconfig files here.
+  rive_root = "${PODS_ROOT}/../.symlinks/plugins/rive_native/native/build/iphoneos/bin"
+  rive_libs = "-lc++ -lrive -lrive_pls_renderer -lrive_yoga -lrive_harfbuzz -lrive_sheenbidi" \
+              " -lrive_decoders -llibpng -lzlib -llibjpeg -llibwebp -lminiaudio" \
+              " -lluau_vm -lluau_compiler -lluau_analyzer -lrive_scripting_workspace -lbrotli"
+
+  ['debug', 'profile', 'release'].each do |config_name|
+    xcconfig_path = File.join(
+      installer.sandbox.root,
+      "Target Support Files/Pods-Runner/Pods-Runner.#{config_name}.xcconfig"
+    )
+    next unless File.exist?(xcconfig_path)
+    content = File.read(xcconfig_path)
+    next if content.include?('// Rive native library paths')
+
+    content += "\n// Rive native library paths (propagated from rive_native pod_target_xcconfig)"
+    content += "\nLIBRARY_SEARCH_PATHS[sdk=iphonesimulator*] = $(inherited) \"#{rive_root}/emulator\""
+    content += "\nLIBRARY_SEARCH_PATHS[sdk=iphoneos*] = $(inherited) \"#{rive_root}/release\""
+    content += "\nOTHER_LDFLAGS[sdk=iphonesimulator*] = $(inherited) -Wl,-force_load,#{rive_root}/emulator/librive_native.a #{rive_libs}"
+    content += "\nOTHER_LDFLAGS[sdk=iphoneos*] = $(inherited) -Wl,-force_load,#{rive_root}/release/librive_native.a #{rive_libs}"
+    File.write(xcconfig_path, content)
+  end
 end
